@@ -9,6 +9,7 @@ plugins {
     kotlin("jvm") version "1.9.0"
     id("io.ktor.plugin") version "2.3.2"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    id("org.liquibase.gradle") version "2.0.4"
 }
 
 group = "com.serameracorp"
@@ -25,6 +26,25 @@ repositories {
     mavenCentral()
 }
 
+// Liquibase plugin configuration
+liquibase {
+    activities.register("main") {
+        val db_url by project.extra.properties
+        val db_user by project.extra.properties
+        val db_password by project.extra.properties
+
+        this.arguments = mapOf(
+            "logLevel" to "info",
+            "changeLogFile" to "src/main/resources/db/changelog.xml",
+            "url" to db_url,
+            "username" to db_user,
+            "password" to db_password,
+            "driver" to "org.postgresql.Driver"
+        )
+    }
+    runList = "main"
+}
+
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
@@ -35,6 +55,10 @@ dependencies {
     implementation("io.ktor:ktor-server-auth-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+
+    liquibaseRuntime("org.liquibase:liquibase-core:4.20.0")
+    liquibaseRuntime("org.postgresql:postgresql:$postgres_version")
+
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

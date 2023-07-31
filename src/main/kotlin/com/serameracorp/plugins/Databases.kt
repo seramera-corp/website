@@ -9,37 +9,24 @@ import java.sql.*
 import kotlinx.coroutines.*
 
 fun Application.configureDatabases() {
-    val dbConnection: Connection = connectToPostgres(embedded = true)
-    val cityService = CityService(dbConnection)
+    val dbConnection: Connection = connectToPostgres(embedded = false)
     routing {
-        // Create city
-        post("/cities") {
-            val city = call.receive<City>()
-            val id = cityService.create(city)
-            call.respond(HttpStatusCode.Created, id)
-        }
-        // Read city
-        get("/cities/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
+        get("/app_users") {
             try {
-                val city = cityService.read(id)
-                call.respond(HttpStatusCode.OK, city)
+                val statement = dbConnection.prepareStatement("select username from app_user;")
+                val resultSet = statement.executeQuery()
+                var names = ""
+
+                if (resultSet.next()) {
+                    val name = resultSet.getString("username")
+                    call.respond(HttpStatusCode.OK, name)
+                } else {
+                    throw Exception("Record not found")
+                }
+
             } catch (e: Exception) {
-                call.respond(HttpStatusCode.NotFound)
+                call.respond(HttpStatusCode.BadRequest)
             }
-        }
-        // Update city
-        put("/cities/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
-            val user = call.receive<City>()
-            cityService.update(id, user)
-            call.respond(HttpStatusCode.OK)
-        }
-        // Delete city
-        delete("/cities/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
-            cityService.delete(id)
-            call.respond(HttpStatusCode.OK)
         }
     }
 }
@@ -70,9 +57,9 @@ fun Application.connectToPostgres(embedded: Boolean): Connection {
     if (embedded) {
         return DriverManager.getConnection("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "root", "")
     } else {
-        val url = environment.config.property("postgres.url").getString()
-        val user = environment.config.property("postgres.user").getString()
-        val password = environment.config.property("postgres.password").getString()
+        val url = "jdbc:postgresql://0.0.0.0:5432/postgres"
+        val user = "postgres"
+        val password = "password"
 
         return DriverManager.getConnection(url, user, password)
     }
