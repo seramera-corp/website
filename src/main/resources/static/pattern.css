@@ -6,48 +6,38 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-flow: row-wrap;
     font-size: 1.6rem;
 }
 
-.projects {
-    display: flex;
-}
 
-.project {
+.pattern {
     display: flex;
     flex-direction: column;
+    align-items: center;
     border: 1px solid gray;
     border-radius: 5px;
     box-shadow: 1px 1px 4px grey;
-    width: 200px;
+    width: 60%;
     padding: 10px;
     margin: 10px;
 }
 
-.project-img {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-}
-
-.project-name {
+.pattern-name {
     font-weight: bold;
     text-decoration: none;
     color: #228e8a;
     margin-top: 1rem;
 }
 
-.project-user {
+.pattern-publisher {
     font-weight: 300;
     text-decoration: none;
     color: grey;
     font-size: 1.5rem;
     margin-top: 0.5rem;
-}
-
-.project-pattern {
-    font-weight: 400;
-    text-decoration: none;
-    color: #222222;
-    margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
