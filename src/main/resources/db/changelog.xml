@@ -4,4 +4,5 @@
     <include file="changelog/002_pattern.sql" relativeToChangelogFile="true"/>
     <include file="changelog/003_project.sql" relativeToChangelogFile="true"/>
     <include file="changelog/004_insert_app_user.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/005_insert_pattern_project.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

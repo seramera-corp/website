@@ -2,12 +2,13 @@ package com.serameracorp
 
 import com.serameracorp.plugins.*
 import io.ktor.server.application.*
-import io.ktor.server.engine.*
+import io.ktor.server.http.content.*
 import io.ktor.server.netty.*
+import io.ktor.server.routing.*
+import java.io.File
 
-fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
-        .start(wait = true)
+fun main(args: Array<String>) {
+    EngineMain.main(args)
 }
 
 fun Application.module() {
@@ -16,4 +17,7 @@ fun Application.module() {
     configureTemplating()
     configureSecurity()
     configureRouting()
+    routing {
+        staticFiles("static", File("src/main/resources/static"))
+    }
 }
