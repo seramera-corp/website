@@ -23,8 +23,8 @@ fun Route.projects() {
     """.trimMargin()
   )
 
-  get("/projects") {
     val resultSet = statement.executeQuery()
+  get("/project") {
     val projects = sequence {
       while (resultSet.next()) {
         val project = Project(
