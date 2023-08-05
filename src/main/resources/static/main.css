@@ -9,6 +9,8 @@ body {
     font-size: 1.6rem;
 }
 
+/* Ab hier projects */
+
 .projects {
     display: flex;
 }
@@ -31,9 +33,9 @@ body {
 }
 
 .project-name {
-    font-weight: 400;
+    font-weight: bold;
     text-decoration: none;
-    color: #c10909;
+    color: #228e8a;
     margin-top: 1rem;
 }
 
@@ -51,3 +53,43 @@ body {
     color: #222222;
     margin-top: 0.5rem;
 }
+
+/* Ab hier pattern */
+
+.pattern-container{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  flex-flow: row-wrap;
+  font-size: 1.6rem;
+}
+
+.pattern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px grey;
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.pattern-name {
+    font-weight: bold;
+    text-decoration: none;
+    color: #228e8a;
+    margin-top: 1rem;
+}
+
+.pattern-publisher {
+    font-weight: 300;
+    text-decoration: none;
+    color: grey;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Ab hier was anderes */
