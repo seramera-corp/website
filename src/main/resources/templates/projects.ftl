@@ -11,7 +11,7 @@
     <#list projects as project>
     <div class="project">
         <img src="${project.imgUrl}" alt="" class="project-img">
-        <a href="" class="project-name">
+        <a href="/project/${project.id}" class="project-name">
             ${project.name}
         </a>
         <a href="" class="project-user">
