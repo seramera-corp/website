@@ -6,33 +6,50 @@ import io.ktor.server.application.*
 import io.ktor.server.freemarker.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import java.sql.ResultSet
 
-data class Pattern(val name: String, val publisher: String)
+data class Pattern(val id: Int, val name: String, val publisher: String)
 
 fun Route.patterns() {
 
     val dbConnection = application.connectToPostgres(embedded = false)
-    val statement = dbConnection.prepareStatement(
+
+    // create pattern object from statement
+    fun patternFromResultSet(resultSet: ResultSet): Pattern =
+        Pattern(
+            resultSet.getInt("id"),
+            resultSet.getString("name"),
+            resultSet.getString("publisher")
+        )
+
+    // statement for search page
+    val searchPatternStatement = dbConnection.prepareStatement(
         """
     | select
+    |   pattern.id as id,
     |   pattern.name as name,
     |   pattern.publisher as publisher
     | from pattern 
-    | where pattern.name='Boxy Bag'
     """.trimMargin()
     )
 
+    // statement for detail page of pattern
+
+    // GET for search
     get("/pattern") {
-        val resultSet = statement.executeQuery()
-        if (resultSet.next()) {
-            val pattern= Pattern(
-                resultSet.getString("name"),
-                resultSet.getString("publisher")
-            )
-            val res = FreeMarkerContent("pattern.ftl", mapOf("pattern" to pattern))
-            call.respond(res)
-        } else {
-            throw Exception("Record not found")
-        }
+        val resultSet = searchPatternStatement.executeQuery()
+
+        val patterns: List<Pattern> = sequence {
+            while (resultSet.next()) {
+                yield(patternFromResultSet(resultSet))
+            }
+        }.toList()
+
+        val res = FreeMarkerContent("patterns.ftl", mapOf("patterns" to patterns))
+        call.respond(res)
     }
+
+
+
+    // GET for detail
 }
