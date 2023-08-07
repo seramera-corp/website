@@ -34,6 +34,16 @@ fun Route.patterns() {
     )
 
     // statement for detail page of pattern
+    val patternByIdStatement = dbConnection.prepareStatement(
+        """
+    | select
+    |   pattern.id as id,
+    |   pattern.name as name,
+    |   pattern.publisher as publisher
+    | from pattern 
+    | where pattern.id = ?
+    """.trimMargin()
+    )
 
     // GET for search
     get("/pattern") {
@@ -49,7 +59,21 @@ fun Route.patterns() {
         call.respond(res)
     }
 
-
-
     // GET for detail
+    get("/pattern/{patternId}") {
+        val patternId = call.parameters["patternId"]?.toIntOrNull()
+        if (patternId == null) {
+            return@get call.respond(HttpStatusCode.NotFound)
+        }
+
+        patternByIdStatement.setInt(1, patternId)
+        val resultSet = patternByIdStatement.executeQuery()
+        if (resultSet.next()) {
+            val pattern = patternFromResultSet(resultSet)
+            val res = FreeMarkerContent("pattern.ftl", mapOf("pattern" to pattern))
+            call.respond(res)
+        } else {
+            call.respond(HttpStatusCode.NotFound)
+        }
+    }
 }
