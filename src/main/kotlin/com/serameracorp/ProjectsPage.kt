@@ -11,6 +11,16 @@ import java.sql.ResultSet
 data class Project(val id: Int, val name: String, val pattern: String, val user: String,
                    val imgUrl: String, val patternId: Int)
 
+fun projectFromResultSet(resultSet: ResultSet): Project =
+  Project(
+    resultSet.getInt("id"),
+    resultSet.getString("name"),
+    resultSet.getString("pattern"),
+    resultSet.getString("user"),
+    "https://clipart-library.com/newhp/kissclipart-white-clothing-black-dress-line-art-96933c1b56d3f716.png",
+    resultSet.getInt("pattern_id")
+  )
+
 fun Route.projects() {
 
   val dbConnection = application.connectToPostgres(embedded = false)
@@ -43,15 +53,7 @@ fun Route.projects() {
     """.trimMargin()
   )
 
-  fun projectFromResultSet(resultSet: ResultSet): Project =
-    Project(
-      resultSet.getInt("id"),
-      resultSet.getString("name"),
-      resultSet.getString("pattern"),
-      resultSet.getString("user"),
-      "https://clipart-library.com/newhp/kissclipart-white-clothing-black-dress-line-art-96933c1b56d3f716.png",
-      resultSet.getInt("pattern_id")
-    )
+
 
   get("/project") {
     val resultSet = allProjectsStatement.executeQuery()

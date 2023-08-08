@@ -45,6 +45,22 @@ fun Route.patterns() {
     """.trimMargin()
     )
 
+    // Finds all projects with the given pattern_id
+    val projectByPatternStatement = dbConnection.prepareStatement(
+        """
+    | select
+    |   project.id as id,
+    |   project.name as name,
+    |   project.pattern_id as pattern_id,
+    |   pattern.name as pattern,
+    |   app_user.username as user
+    | from project
+    | join pattern on project.pattern_id = pattern.id 
+    | join app_user on project.app_user_id = app_user.id 
+    | where pattern.id = ?
+    """.trimMargin()
+    )
+
     // GET for search
     get("/pattern") {
         val resultSet = searchPatternStatement.executeQuery()
@@ -70,7 +86,19 @@ fun Route.patterns() {
         val resultSet = patternByIdStatement.executeQuery()
         if (resultSet.next()) {
             val pattern = patternFromResultSet(resultSet)
-            val res = FreeMarkerContent("pattern.ftl", mapOf("pattern" to pattern))
+
+            projectByPatternStatement.setInt(1, patternId)
+            val projectResults = projectByPatternStatement.executeQuery()
+            val projects = sequence {
+                while (projectResults.next()) {
+                    yield(projectFromResultSet(projectResults))
+                }
+            }.toList()
+
+            val res = FreeMarkerContent("pattern.ftl", mapOf(
+                "pattern" to pattern,
+                "projects" to projects
+            ))
             call.respond(res)
         } else {
             call.respond(HttpStatusCode.NotFound)
