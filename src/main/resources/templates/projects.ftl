@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Static page</title>
-    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
 <h1>Recent Projects:</h1>
@@ -17,7 +17,7 @@
         <a href="" class="project-user">
             ${project.user}
         </a>
-        <a href="" class="project-pattern">
+        <a href="/pattern/${project.patternId}" class="project-pattern">
             ${project.pattern}
         </a>
     </div>

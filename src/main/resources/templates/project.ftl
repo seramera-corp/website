@@ -14,7 +14,7 @@
     <a href="" class="project-user">
         ${project.user}
     </a>
-    <a href="" class="project-pattern">
+    <a href="/pattern/${project.patternId}" class="project-pattern">
         ${project.pattern}
     </a>
 </div>

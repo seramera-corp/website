@@ -8,7 +8,18 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import java.sql.ResultSet
 
-data class Project(val id: Int, val name: String, val pattern: String, val user: String, val imgUrl: String)
+data class Project(val id: Int, val name: String, val pattern: String, val user: String,
+                   val imgUrl: String, val patternId: Int)
+
+fun projectFromResultSet(resultSet: ResultSet): Project =
+  Project(
+    resultSet.getInt("id"),
+    resultSet.getString("name"),
+    resultSet.getString("pattern"),
+    resultSet.getString("user"),
+    "https://clipart-library.com/newhp/kissclipart-white-clothing-black-dress-line-art-96933c1b56d3f716.png",
+    resultSet.getInt("pattern_id")
+  )
 
 fun Route.projects() {
 
@@ -18,6 +29,7 @@ fun Route.projects() {
     | select
     |   project.id as id,
     |   project.name as name,
+    |   project.pattern_id as pattern_id,
     |   pattern.name as pattern,
     |   app_user.username as user 
     | from project 
@@ -31,8 +43,9 @@ fun Route.projects() {
     | select
     |   project.id as id,
     |   project.name as name,
+    |   project.pattern_id as pattern_id,
     |   pattern.name as pattern,
-    |   app_user.username as user 
+    |   app_user.username as user
     | from project 
     | join pattern on project.pattern_id = pattern.id 
     | join app_user on project.app_user_id = app_user.id 
@@ -40,14 +53,7 @@ fun Route.projects() {
     """.trimMargin()
   )
 
-  fun projectFromResultSet(resultSet: ResultSet): Project =
-    Project(
-      resultSet.getInt("id"),
-      resultSet.getString("name"),
-      resultSet.getString("pattern"),
-      resultSet.getString("user"),
-      "https://clipart-library.com/newhp/kissclipart-white-clothing-black-dress-line-art-96933c1b56d3f716.png"
-    )
+
 
   get("/project") {
     val resultSet = allProjectsStatement.executeQuery()

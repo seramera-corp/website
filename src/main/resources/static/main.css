@@ -56,12 +56,46 @@ body {
 
 /* Ab hier pattern */
 
-.pattern-container{
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  flex-flow: row-wrap;
-  font-size: 1.6rem;
+.pattern-search-container {
+    display:flex;
+    flex-direction:row;
+    /*border nur damit man sieht, dass es einen container gibt*/
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.pattern-search {
+    display:flex;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px grey;
+    width: 25%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.pattern-search-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px grey;
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* for detailed pattern */
+.pattern-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    flex-flow: row-wrap;
+    font-size: 1.6rem;
 }
 
 .pattern {
@@ -90,6 +124,18 @@ body {
     font-size: 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+}
+
+.pattern-projects {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px grey;
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
 }
 
 /* Ab hier was anderes */
