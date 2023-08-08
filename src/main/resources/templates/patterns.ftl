@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pattern Search</title>
-    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
 <h1>Patterns:</h1>
