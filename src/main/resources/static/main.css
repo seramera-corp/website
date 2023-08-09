@@ -138,4 +138,16 @@ body {
     margin: 10px;
 }
 
+/* user */
+.user-projects {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px grey;
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
+}
 /* Ab hier was anderes */
