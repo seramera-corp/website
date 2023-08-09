@@ -15,7 +15,6 @@
     <section class="pattern-search-result">
         <p>Results:</p>
         <div class="patterns">
-            <!--/*@thymesVar id="patterns" type="com.serameracorp.Pattern"*/-->
             <div th:each="pattern : ${patterns}"
                  th:insert="~{fragments/cards :: pattern(${pattern})}"
                  th:remove="tag">

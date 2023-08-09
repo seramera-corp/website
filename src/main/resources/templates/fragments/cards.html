@@ -7,7 +7,6 @@
 </head>
 <body>
 <div class="project" th:fragment="project(project)">
-    <!--/*@thymesVar id="project" type="com.serameracorp.Project"*/-->
     <img class="project-img"
          th:src="${project.imgUrl}"
          src="https://clipart-library.com/newhp/kissclipart-white-clothing-black-dress-line-art-96933c1b56d3f716.png"
@@ -32,7 +31,6 @@
 </div>
 
 <div class="pattern" th:fragment="pattern(pattern)">
-    <!--/*@thymesVar id="pattern" type="com.serameracorp.Pattern"*/-->
     <a class="pattern-name" href="" th:text="${pattern.name}">
         My Fancy Pattern
     </a>
