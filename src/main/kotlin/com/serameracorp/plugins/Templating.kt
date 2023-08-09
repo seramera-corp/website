@@ -1,13 +1,17 @@
 package com.serameracorp.plugins
 
-import freemarker.cache.*
-import freemarker.core.HTMLOutputFormat
 import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
+import io.ktor.server.thymeleaf.*
+import org.thymeleaf.templateresolver.FileTemplateResolver
 
 fun Application.configureTemplating() {
-    install(FreeMarker) {
-        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
-        outputFormat = HTMLOutputFormat.INSTANCE
-    }
+  install(Thymeleaf) {
+    setTemplateResolver(
+      FileTemplateResolver().apply {
+        cacheManager = null
+        prefix = "src/main/resources/templates/"
+        suffix = ".html"
+        characterEncoding = "utf-8"
+      })
+  }
 }

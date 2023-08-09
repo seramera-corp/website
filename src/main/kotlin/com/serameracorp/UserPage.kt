@@ -3,9 +3,9 @@ package com.serameracorp
 import com.serameracorp.plugins.connectToPostgres
 import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.thymeleaf.*
 import java.sql.ResultSet
 
 data class User(val id: Int, val name: String, val machine: String)
@@ -71,7 +71,7 @@ fun Route.user() {
                 }
             }.toList()
 
-            val res = FreeMarkerContent("user.ftl", mapOf(
+            val res = ThymeleafContent("user.html", mapOf(
                 "user" to user,
                 "projects" to projects
             ))

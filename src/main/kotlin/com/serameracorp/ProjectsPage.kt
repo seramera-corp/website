@@ -3,9 +3,9 @@ package com.serameracorp
 import com.serameracorp.plugins.connectToPostgres
 import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.thymeleaf.*
 import java.sql.ResultSet
 
 data class Project(val id: Int, val name: String, val pattern: String, val user: String,
@@ -53,8 +53,6 @@ fun Route.projects() {
     """.trimMargin()
   )
 
-
-
   get("/project") {
     val resultSet = allProjectsStatement.executeQuery()
     val projects = sequence {
@@ -63,7 +61,7 @@ fun Route.projects() {
       }
     }.toList()
 
-    val res = FreeMarkerContent("projects.ftl", mapOf("projects" to projects))
+    val res = ThymeleafContent("projects.html", mapOf("projects" to projects))
     call.respond(res)
   }
 
@@ -77,7 +75,7 @@ fun Route.projects() {
     val resultSet = projectByIdStatement.executeQuery()
     if (resultSet.next()) {
       val project = projectFromResultSet(resultSet)
-      val res = FreeMarkerContent("project.ftl", mapOf("project" to project))
+      val res = ThymeleafContent("project.html", mapOf("project" to project))
       call.respond(res)
     } else {
       call.respond(HttpStatusCode.NotFound)
