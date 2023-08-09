@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Look at my projects!</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<h1>Hello,</h1>
+<h1>I am <span th:text="${user.name}">Test User</span> and these are my beautiful projects:</h1>
+<div class="user-projects">
+    <div th:each="project : ${projects}" th:insert="~{fragments/cards :: project(${project})}" th:remove="tag"></div>
+    <div th:if="${#lists.isEmpty(projects)}">No projects found for this user yet. Start sewing now!</div>
+</div>
+</body>
+</html>

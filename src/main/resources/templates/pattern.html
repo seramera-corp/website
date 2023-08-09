@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome Pattern Page!</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<h1>Pattern Details</h1>
+<h2>This page should display details of a pattern</h2>
+<div class="pattern-container">
+    <div th:replace="fragments/cards :: pattern(${pattern})"></div>
+</div>
+<h2>Recently finished projects using this pattern</h2>
+<div class="pattern-projects">
+    <div th:each="project : ${projects}" th:insert="~{fragments/cards :: project(${project})}" th:remove="tag"></div>
+</div>
+</body>
+</html>

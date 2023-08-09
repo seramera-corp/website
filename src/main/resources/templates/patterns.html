@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Pattern Search</title>
@@ -14,16 +14,13 @@
     </section>
     <section class="pattern-search-result">
         <p>Results:</p>
-        <#list patterns as pattern>
         <div class="patterns">
-            <a href="/pattern/${pattern.id}" class="pattern-name">
-                ${pattern.name}
-            </a>
-            <a href="" class="pattern-publisher">
-                ${pattern.publisher}
-            </a>
+            <div th:each="pattern : ${patterns}"
+                 th:insert="~{fragments/cards :: pattern(${pattern})}"
+                 th:remove="tag">
+                Here's the list of patterns
+            </div>
         </div>
-        </#list>
     </section>
 </div>
 </body>

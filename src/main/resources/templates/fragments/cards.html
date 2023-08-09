@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My card fragments!</title>
+    <link rel="stylesheet" href="../../static/main.css">
+</head>
+<body>
+<div class="project" th:fragment="project(project)">
+    <img class="project-img"
+         th:src="${project.imgUrl}"
+         src="https://clipart-library.com/newhp/kissclipart-white-clothing-black-dress-line-art-96933c1b56d3f716.png"
+         alt="An image for the project">
+    <a class="project-name"
+       href=""
+       th:href="|/project/${project.id}|"
+       th:text="${project.name}">
+        My Awesome Project
+    </a>
+    <a class="project-user"
+       href=""
+       th:text="${project.user}">
+        Example User
+    </a>
+    <a class="project-pattern"
+       href=""
+       th:href="|/pattern/${project.patternId}|"
+       th:text="${project.pattern}">
+        A cool Pattern
+    </a>
+</div>
+
+<div class="pattern" th:fragment="pattern(pattern)">
+    <a class="pattern-name" href="" th:text="${pattern.name}">
+        My Fancy Pattern
+    </a>
+    <a class="pattern-publisher" href="" th:text="${pattern.publisher}">
+        Pattern Publisher
+    </a>
+</div>
+
+</body>
+</html>

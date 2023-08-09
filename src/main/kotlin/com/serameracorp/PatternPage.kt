@@ -3,9 +3,9 @@ package com.serameracorp
 import com.serameracorp.plugins.connectToPostgres
 import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.thymeleaf.*
 import java.sql.ResultSet
 
 data class Pattern(val id: Int, val name: String, val publisher: String)
@@ -71,7 +71,7 @@ fun Route.patterns() {
             }
         }.toList()
 
-        val res = FreeMarkerContent("patterns.ftl", mapOf("patterns" to patterns))
+        val res = ThymeleafContent("patterns.html", mapOf("patterns" to patterns))
         call.respond(res)
     }
 
@@ -95,7 +95,7 @@ fun Route.patterns() {
                 }
             }.toList()
 
-            val res = FreeMarkerContent("pattern.ftl", mapOf(
+            val res = ThymeleafContent("pattern.html", mapOf(
                 "pattern" to pattern,
                 "projects" to projects
             ))
