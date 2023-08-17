@@ -23,7 +23,7 @@ fun projectFromResultSet(resultSet: ResultSet): Project =
 
 fun Route.projects() {
 
-  val dbConnection = application.connectToPostgres(embedded = false)
+  val dbConnection = connectToPostgres(embedded = false)
   val allProjectsStatement = dbConnection.prepareStatement(
     """
     | select

@@ -12,7 +12,7 @@ data class Pattern(val id: Int, val name: String, val publisher: String)
 
 fun Route.patterns() {
 
-    val dbConnection = application.connectToPostgres(embedded = false)
+    val dbConnection = connectToPostgres(embedded = false)
 
     // create pattern object from statement
     fun patternFromResultSet(resultSet: ResultSet): Pattern =

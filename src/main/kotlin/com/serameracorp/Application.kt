@@ -12,8 +12,6 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    configureSerialization()
-    configureDatabases()
     configureTemplating()
     configureSecurity()
     configureRouting()
