@@ -5,7 +5,9 @@
     <title>Static page</title>
     <link rel="stylesheet" href="/static/main.css">
 </head>
+
 <body>
+<div th:replace="~{fragments/header :: header}">&nbsp;</div>
 <div th:replace="~{fragments/cards :: project(${project})}"></div>
 </body>
 </html>

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
+
+<div th:replace="~{fragments/header :: header}">&nbsp;</div>
 <h1>Hello,</h1>
 <h1>I am <span th:text="${user.name}">Test User</span> and these are my beautiful projects:</h1>
 <div class="user-projects">
