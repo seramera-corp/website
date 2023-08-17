@@ -8,7 +8,7 @@ import io.ktor.server.routing.*
 import io.ktor.server.thymeleaf.*
 import java.sql.ResultSet
 
-data class Pattern(val id: Int, val name: String, val publisher: String)
+data class Pattern(val id: Int, val name: String, val publisher: String, val img_url: String)
 
 fun Route.patterns() {
 
@@ -19,8 +19,11 @@ fun Route.patterns() {
         Pattern(
             resultSet.getInt("id"),
             resultSet.getString("name"),
-            resultSet.getString("publisher")
+            resultSet.getString("publisher"),
+            resultSet.getString("img_url")
         )
+
+
 
     // statement for search page
     val searchPatternStatement = dbConnection.prepareStatement(
@@ -28,7 +31,8 @@ fun Route.patterns() {
     | select
     |   pattern.id as id,
     |   pattern.name as name,
-    |   pattern.publisher as publisher
+    |   pattern.publisher as publisher,
+    |   pattern.img_url as img_url
     | from pattern 
     """.trimMargin()
     )
@@ -39,7 +43,8 @@ fun Route.patterns() {
     | select
     |   pattern.id as id,
     |   pattern.name as name,
-    |   pattern.publisher as publisher
+    |   pattern.publisher as publisher,
+    |   pattern.img_url as img_url
     | from pattern 
     | where pattern.id = ?
     """.trimMargin()

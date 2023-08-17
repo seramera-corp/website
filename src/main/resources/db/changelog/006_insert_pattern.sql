@@ -1,7 +1,3 @@
-insert into pattern (name, publisher)
-values ('Boxy Bag', 'Glücksfilz');
-
--- ab hier Adrianas Input
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating)
 values
 ('Luftige Party-Bluse', 'Burda', 'Heft 01/1950', 9.82738580508807, '1/5');
@@ -28,7 +24,7 @@ values
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating, img_url)
 values
-('Warme Männer-Corsage', 'Burda', 'Heft 07/2000', 2.48848215535003, '2/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/view');
+('Warme Männer-Corsage', 'Burda', 'Heft 07/2000', 2.48848215535003, '2/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/preview');
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating)
 values
@@ -56,7 +52,7 @@ values
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating, img_url)
 values
-('Seriöses Baby -Oberteil', 'Burda', 'Heft 02/2007', 9.355354880605214, '2/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/view');
+('Seriöses Baby -Oberteil', 'Burda', 'Heft 02/2007', 9.355354880605214, '2/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/preview');
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating)
 values
@@ -120,7 +116,7 @@ values
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating, img_url)
 values
-('Warme Patchwork-Jacke', 'Burda', 'Heft 09/2000', 4.988296476502766, '5/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/view');
+('Warme Patchwork-Jacke', 'Burda', 'Heft 09/2000', 4.988296476502766, '5/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/preview');
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating)
 values
@@ -240,7 +236,7 @@ values
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating, img_url)
 values
-('Gemütliche Hochzeits-Jacke', 'My fit', 'Heft 05/2007', 3.783171236087849, '2/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/view');
+('Gemütliche Hochzeits-Jacke', 'My fit', 'Heft 05/2007', 3.783171236087849, '2/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/preview');
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating)
 values
@@ -264,7 +260,7 @@ values
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating, img_url)
 values
-('Hochzeits-Kleid', 'Burda Style', 'Heft 06/2013', 4.631042047969448, '5/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/view');
+('Hochzeits-Kleid', 'Burda Style', 'Heft 06/2013', 4.631042047969448, '5/5', 'https://drive.google.com/file/d/1-1dfxBRFVLbOGOQZSh7od-s2tnbH9cMN/preview');
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating)
 values
@@ -1388,5 +1384,4 @@ values
 
 insert into pattern (name, publisher, published_in, fabric_consumption_metric, rating, img_url)
 values
-('Bestickte Jeans ', 'Simplicity', 'Heft 5/2020', 4.0, '2/5', 'https://drive.google.com/file/d/1V4ojcg_m5nztTakv-t6QHyQDkR-eflnx/view');
-
+('Bestickte Jeans ', 'Simplicity', 'Heft 5/2020', 4.0, '2/5', 'https://drive.google.com/file/d/1V4ojcg_m5nztTakv-t6QHyQDkR-eflnx/preview');

@@ -31,9 +31,15 @@
 </div>
 
 <div class="pattern" th:fragment="pattern(pattern)">
-    <a class="pattern-name" href="" th:text="${pattern.name}">
+    <a class="pattern-name" th:href="|/pattern/${pattern.id}|" th:text="${pattern.name}">
         My Fancy Pattern
     </a>
+
+    <img class="pattern-img"
+         th:src="${pattern.img_url}"
+         src="https://drive.google.com/file/d/1ImSFvCqlPdk4naYRrMP49NnSDX5-Swd_/preview"
+         alt="An image for the project">
+
     <a class="pattern-publisher" href="" th:text="${pattern.publisher}">
         Pattern Publisher
     </a>
