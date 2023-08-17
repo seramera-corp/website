@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Static page</title>
     <link rel="stylesheet" href="/static/main.css">
-    <div th:replace="~{fragments/header :: header}">&nbsp;</div>
 </head>
+
 <body>
+<div th:replace="~{fragments/header :: header}">&nbsp;</div>
 <div th:replace="~{fragments/cards :: project(${project})}"></div>
 </body>
 </html>

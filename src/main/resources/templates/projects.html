@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Static page</title>
     <link rel="stylesheet" href="/static/main.css">
-    <div th:replace="~{fragments/header :: header}">&nbsp;</div>
 </head>
 <body>
+
+<div th:replace="~{fragments/header :: header}">&nbsp;</div>
+
 <h1>Recent Projects:</h1>
 <section class="projects">
     <div th:each="project : ${projects}" th:insert="~{fragments/cards :: project(${project})}" th:remove="tag"></div>
