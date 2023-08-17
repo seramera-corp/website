@@ -9,6 +9,26 @@ body {
     font-size: 1.6rem;
 }
 
+li{
+    display:inline;
+}
+
+/* Navbar */
+
+.navbar-top {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+}
+
+.navbar-nav {
+    display: block;
+}
+
+.navbar-link {
+    font-size: 1.6rem;
+}
+
 /* Ab hier projects */
 
 .projects {
@@ -150,4 +170,8 @@ body {
     padding: 10px;
     margin: 10px;
 }
+
+
+
+
 /* Ab hier was anderes */
