@@ -116,6 +116,9 @@ body {
     color: var(--primary-colour);
     margin-top: 1rem;
 }
+.project-name:hover {
+    text-decoration: underline;
+}
 
 .project-user {
     font-weight: 300;
@@ -124,12 +127,18 @@ body {
     font-size: 1.5rem;
     margin-top: 0.5rem;
 }
+.project-user:hover {
+    text-decoration: underline;
+}
 
 .project-pattern {
     font-weight: 400;
     text-decoration: none;
     color: #222222;
     margin-top: 0.5rem;
+}
+.project-pattern:hover {
+    text-decoration: underline;
 }
 
 /* Ab hier pattern */
@@ -192,6 +201,9 @@ body {
     text-decoration: none;
     color: #228e8a;
     margin-top: 1rem;
+}
+.pattern-name:hover {
+    text-decoration: underline;
 }
 
 .pattern-publisher {
