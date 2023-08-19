@@ -12,7 +12,7 @@ data class User(val id: Int, val name: String, val machine: String)
 
 fun Route.user() {
 
-    val dbConnection = application.connectToPostgres(embedded = false)
+    val dbConnection = connectToPostgres(embedded = false)
 
     // create user object from statement
     fun userFromResultSet(resultSet: ResultSet): User =

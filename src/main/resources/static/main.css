@@ -1,32 +1,91 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 :root {
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
+
+    --primary-colour: #228e8a;
 }
+
 
 body {
     font-size: 1.6rem;
+    padding: 0;
+    margin: 0;
 }
 
-li{
-    display:inline;
+/* Utility classes */
+.btn {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: white;
+}
+
+.btn:hover {
+    background-color: lightgray;
 }
 
 /* Navbar */
 
-.navbar-top {
+.navbar {
     display: flex;
-    flex-direction: row;
-    align-items: left;
+    align-items: center;
+    box-shadow: #AABBAA 0px 2px 5px;
 }
 
-.navbar-nav {
-    display: block;
+.navbar-logo {
+    background-color: var(--primary-colour);
+    padding: 1rem;
 }
 
-.navbar-link {
-    font-size: 1.6rem;
+.navbar-logo-text {
+    font-family: 'Macondo', cursive;
+    font-size: 4rem;
+    font-variant: small-caps;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-menu {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    font-size: 2rem;
+
+}
+
+.navbar-menu-item {
+    display: inline;
+    margin-left: 2rem;
+    padding: 0.5rem 0.5rem;
+}
+
+.navbar-menu-item:hover {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+}
+
+.navbar-menu-link {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-login-btn {
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+    margin-right: 2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.navbar-login-btn:hover {
+    background-color: var(--primary-colour);
+    color: white;
 }
 
 /* Ab hier projects */
@@ -55,7 +114,7 @@ li{
 .project-name {
     font-weight: bold;
     text-decoration: none;
-    color: #228e8a;
+    color: var(--primary-colour);
     margin-top: 1rem;
 }
 
@@ -76,25 +135,16 @@ li{
 
 /* Ab hier pattern */
 
-.pattern-search-container {
-    display:flex;
-    flex-direction:row;
-    /*border nur damit man sieht, dass es einen container gibt*/
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 60%;
-    padding: 10px;
-    margin: 10px;
+.pattern-search {
+    margin-left: 1rem;
 }
 
-.pattern-search {
-    display:flex;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px grey;
-    width: 25%;
-    padding: 10px;
-    margin: 10px;
+.pattern-search-input-container {
+    margin-top: 1rem;
+}
+
+.pattern-search-input {
+    padding: 1rem 0.5rem;
 }
 
 .pattern-search-result {

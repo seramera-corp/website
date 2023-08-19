@@ -31,7 +31,10 @@
 </div>
 
 <div class="pattern" th:fragment="pattern(pattern)">
-    <a class="pattern-name" th:href="|/pattern/${pattern.id}|" th:text="${pattern.name}">
+    <a class="pattern-name"
+       href=""
+       th:href="|/pattern/${pattern.id}|"
+       th:text="${pattern.name}">
         My Fancy Pattern
     </a>
 

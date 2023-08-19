@@ -6,13 +6,14 @@ import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.thymeleaf.*
+import java.sql.PreparedStatement
 import java.sql.ResultSet
 
 data class Pattern(val id: Int, val name: String, val publisher: String, val img_url: String)
 
 fun Route.patterns() {
 
-    val dbConnection = application.connectToPostgres(embedded = false)
+    val dbConnection = connectToPostgres(embedded = false)
 
     // create pattern object from statement
     fun patternFromResultSet(resultSet: ResultSet): Pattern =
@@ -23,19 +24,21 @@ fun Route.patterns() {
             resultSet.getString("img_url")
         )
 
-
-
     // statement for search page
-    val searchPatternStatement = dbConnection.prepareStatement(
-        """
-    | select
-    |   pattern.id as id,
-    |   pattern.name as name,
-    |   pattern.publisher as publisher,
-    |   pattern.img_url as img_url
-    | from pattern 
-    """.trimMargin()
-    )
+    fun searchPatternStatement(searchParam: String?): PreparedStatement {
+        val filter = searchParam?.let { "where pattern.name ilike '%${it}%'" } ?: ""
+        return dbConnection.prepareStatement(
+            """
+            | select
+            |   pattern.id as id,
+            |   pattern.name as name,
+            |   pattern.publisher as publisher,
+            |   pattern.img_url as img_url
+            | from pattern
+            | $filter
+        """.trimMargin()
+        )
+    }
 
     // statement for detail page of pattern
     val patternByIdStatement = dbConnection.prepareStatement(
@@ -68,7 +71,9 @@ fun Route.patterns() {
 
     // GET for search
     get("/pattern") {
-        val resultSet = searchPatternStatement.executeQuery()
+        val searchParam = call.request.queryParameters["pattern-search"]
+
+        val resultSet = searchPatternStatement(searchParam).executeQuery()
 
         val patterns: List<Pattern> = sequence {
             while (resultSet.next()) {
@@ -100,10 +105,12 @@ fun Route.patterns() {
                 }
             }.toList()
 
-            val res = ThymeleafContent("pattern.html", mapOf(
-                "pattern" to pattern,
-                "projects" to projects
-            ))
+            val res = ThymeleafContent(
+                "pattern.html", mapOf(
+                    "pattern" to pattern,
+                    "projects" to projects
+                )
+            )
             call.respond(res)
         } else {
             call.respond(HttpStatusCode.NotFound)
