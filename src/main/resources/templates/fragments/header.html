@@ -7,20 +7,27 @@
 </head>
 <body>
 
-<nav class="navbar-top" th:fragment="header">
+<nav class="navbar" th:fragment="header">
 
-  <div class="navbar-header">
-    <a class="navbar-brand" href="/">WebsiteName</a>
+  <div class="navbar-logo">
+    <a class="navbar-logo-text" href="/">SeraMera</a>
   </div>
 
-  <ul class="navbar-nav">
-    <li>
-      <a class="nav-link" href="/project">Projects</a>
+  <ul class="navbar-menu">
+    <li class="navbar-menu-item">
+      <a class="navbar-menu-link" href="/pattern">Patterns</a>
     </li>
-    <li>
-      <a class="nav-link" href="/pattern">Patterns</a>
+    <li class="navbar-menu-item">
+      <a class="navbar-menu-link" href="/project">Projects</a>
+    </li>
+    <li class="navbar-menu-item">
+      <a class="navbar-menu-link" href="" th:href="'/user/1'">Users</a>
     </li>
   </ul>
+
+  <div class="navbar-login">
+    <a href="" class="navbar-login-btn">Login</a>
+  </div>
 
 </nav>
 
