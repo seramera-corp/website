@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Pattern Search</title>
-    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" th:href="'/static/main.css'" href="../static/main.css">
 </head>
 <body>
 
-<div th:replace="~{fragments/header :: header}">&nbsp;</div>
+<div th:replace="~{fragments/header :: header}"></div>
 
 <h1>Search Patterns:</h1>
 
 
 <div class="pattern-search-container">
-    <section class="pattern-search">
-        <p>Search:</p>
-    </section>
+    <form class="pattern-search">
+        <label for="pattern-search">Search:</label>
+        <div class="pattern-search-input-container">
+            <input
+                    class="pattern-search-input"
+                    id="pattern-search"
+                    name="pattern-search"
+                    type="text"
+                    placeholder="Search term"
+            >
+            <button type="submit" class="btn">Search</button>
+        </div>
+    </form>
     <section class="pattern-search-result">
         <p>Results:</p>
         <div class="patterns">

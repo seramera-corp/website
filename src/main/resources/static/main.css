@@ -14,8 +14,14 @@ body {
     margin: 0;
 }
 
-li{
-    display:inline;
+/* Utility classes */
+.btn {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: white;
 }
 
 .btn:hover {
@@ -129,25 +135,16 @@ li{
 
 /* Ab hier pattern */
 
-.pattern-search-container {
-    display:flex;
-    flex-direction:row;
-    /*border nur damit man sieht, dass es einen container gibt*/
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 60%;
-    padding: 10px;
-    margin: 10px;
+.pattern-search {
+    margin-left: 1rem;
 }
 
-.pattern-search {
-    display:flex;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px grey;
-    width: 25%;
-    padding: 10px;
-    margin: 10px;
+.pattern-search-input-container {
+    margin-top: 1rem;
+}
+
+.pattern-search-input {
+    padding: 1rem 0.5rem;
 }
 
 .pattern-search-result {
