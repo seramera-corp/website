@@ -9,9 +9,6 @@
 
 <div th:replace="~{fragments/header :: header}"></div>
 
-<h1>Search Patterns:</h1>
-
-
 <div class="pattern-search-container">
     <form class="pattern-search">
         <label for="pattern-search">Search:</label>
@@ -27,7 +24,6 @@
         </div>
     </form>
     <section class="pattern-search-result">
-        <p>Results:</p>
         <div class="patterns">
             <div th:each="pattern : ${patterns}"
                  th:insert="~{fragments/cards :: pattern(${pattern})}"

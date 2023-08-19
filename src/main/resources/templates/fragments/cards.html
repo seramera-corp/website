@@ -38,11 +38,20 @@
         My Fancy Pattern
     </a>
 
+<!-- da ich Bilder sehen will muss ich leider das inline frame übr google drive benutzen, sonst sehe ich nichts.    -->
+    <iframe class="pattern-img"
+            th:src="${pattern.img_url}"
+            src="https://drive.google.com/file/d/1ImSFvCqlPdk4naYRrMP49NnSDX5-Swd_/preview"
+            alt="An image for the project"
+            allow="autoplay">
+    </iframe>
+
+<!-- urprünglicher code
     <img class="pattern-img"
          th:src="${pattern.img_url}"
          src="https://drive.google.com/file/d/1ImSFvCqlPdk4naYRrMP49NnSDX5-Swd_/preview"
          alt="An image for the project">
-
+-->
     <a class="pattern-publisher" href="" th:text="${pattern.publisher}">
         Pattern Publisher
     </a>

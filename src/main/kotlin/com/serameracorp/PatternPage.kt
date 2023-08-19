@@ -36,6 +36,7 @@ fun Route.patterns() {
             |   pattern.img_url as img_url
             | from pattern
             | $filter
+            | LIMIT 25
         """.trimMargin()
         )
     }
@@ -66,6 +67,7 @@ fun Route.patterns() {
     | join pattern on project.pattern_id = pattern.id 
     | join app_user on project.app_user_id = app_user.id 
     | where pattern.id = ?
+    | LIMIT 25
     """.trimMargin()
     )
 
