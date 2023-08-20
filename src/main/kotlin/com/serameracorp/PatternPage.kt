@@ -9,7 +9,7 @@ import io.ktor.server.thymeleaf.*
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 
-data class Pattern(val id: Int, val name: String, val publisher: String)
+data class Pattern(val id: Int, val name: String, val publisher: String, val img_url: String)
 
 fun Route.patterns() {
 
@@ -20,7 +20,8 @@ fun Route.patterns() {
         Pattern(
             resultSet.getInt("id"),
             resultSet.getString("name"),
-            resultSet.getString("publisher")
+            resultSet.getString("publisher"),
+            resultSet.getString("img_url")
         )
 
     // statement for search page
@@ -28,13 +29,15 @@ fun Route.patterns() {
         val filter = searchParam?.let { "where pattern.name ilike '%${it}%'" } ?: ""
         return dbConnection.prepareStatement(
             """
-    | select
-    |   pattern.id as id,
-    |   pattern.name as name,
-    |   pattern.publisher as publisher
-    | from pattern
-    | $filter
-    """.trimMargin()
+            | select
+            |   pattern.id as id,
+            |   pattern.name as name,
+            |   pattern.publisher as publisher,
+            |   pattern.img_url as img_url
+            | from pattern
+            | $filter
+            | LIMIT 25
+        """.trimMargin()
         )
     }
 
@@ -44,7 +47,8 @@ fun Route.patterns() {
     | select
     |   pattern.id as id,
     |   pattern.name as name,
-    |   pattern.publisher as publisher
+    |   pattern.publisher as publisher,
+    |   pattern.img_url as img_url
     | from pattern 
     | where pattern.id = ?
     """.trimMargin()
@@ -63,6 +67,7 @@ fun Route.patterns() {
     | join pattern on project.pattern_id = pattern.id 
     | join app_user on project.app_user_id = app_user.id 
     | where pattern.id = ?
+    | LIMIT 25
     """.trimMargin()
     )
 

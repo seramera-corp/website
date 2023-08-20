@@ -1,8 +1,8 @@
 insert into pattern (name, publisher)
 values ('Fancy Shirt', 'Burda');
 
-insert into pattern (name, publisher)
-values ('Smooth Pants', 'Mara''s Sewing Recipes');
+insert into pattern (name, publisher, rating)
+values ('Smooth Pants', 'Mara''s Sewing Recipes', 5);
 
 insert into pattern (name, publisher)
 values ('Large Hat', 'Hatmakers Inc.');

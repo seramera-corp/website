@@ -54,7 +54,6 @@ body {
     padding: 0;
     flex-grow: 1;
     font-size: 2rem;
-
 }
 
 .navbar-menu-item {
@@ -117,6 +116,9 @@ body {
     color: var(--primary-colour);
     margin-top: 1rem;
 }
+.project-name:hover {
+    text-decoration: underline;
+}
 
 .project-user {
     font-weight: 300;
@@ -125,6 +127,9 @@ body {
     font-size: 1.5rem;
     margin-top: 0.5rem;
 }
+.project-user:hover {
+    text-decoration: underline;
+}
 
 .project-pattern {
     font-weight: 400;
@@ -132,8 +137,18 @@ body {
     color: #222222;
     margin-top: 0.5rem;
 }
+.project-pattern:hover {
+    text-decoration: underline;
+}
 
 /* Ab hier pattern */
+.pattern-search-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 60%
+    padding: 4rem;
+}
 
 .pattern-search {
     margin-left: 1rem;
@@ -147,14 +162,14 @@ body {
     padding: 1rem 0.5rem;
 }
 
-.pattern-search-result {
+.patterns {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px grey;
-    width: 75%;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pattern-search-result {
     padding: 10px;
     margin: 10px;
 }
@@ -164,7 +179,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: left;
-    flex-flow: row-wrap;
+    flex-flow: wrap;
     font-size: 1.6rem;
 }
 
@@ -175,7 +190,8 @@ body {
     border: 1px solid gray;
     border-radius: 5px;
     box-shadow: 1px 1px 4px grey;
-    width: 60%;
+    width: 200px;
+    height: 250px;
     padding: 10px;
     margin: 10px;
 }
@@ -186,6 +202,9 @@ body {
     color: #228e8a;
     margin-top: 1rem;
 }
+.pattern-name:hover {
+    text-decoration: underline;
+}
 
 .pattern-publisher {
     font-weight: 300;
@@ -194,6 +213,12 @@ body {
     font-size: 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+}
+
+.pattern-img {
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
 }
 
 .pattern-projects {
