@@ -4,7 +4,11 @@
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
 
-    --primary-colour: #228e8a;
+    --primary-colour: #74B5C5;
+    --secondary-colour: #5BA199;
+    --contrast-colour: #fcd474;
+    --background-colour: #FFFFFF;
+    --text-colour: #144648;
 }
 
 
@@ -12,12 +16,13 @@ body {
     font-size: 1.6rem;
     padding: 0;
     margin: 0;
+    background-color: var(--background-colour);
 }
 
 /* Utility classes */
 .btn {
     text-decoration: none;
-    color: black;
+    color: var(--text-colour);
     border: 1px solid black;
     border-radius: 5px;
     padding: 1rem;
@@ -25,7 +30,7 @@ body {
 }
 
 .btn:hover {
-    background-color: lightgray;
+    background-color: var(--secondary-colour);
 }
 
 /* Navbar */
@@ -45,7 +50,7 @@ body {
     font-family: 'Macondo', cursive;
     font-size: 4rem;
     font-variant: small-caps;
-    color: white;
+    color: var(--background-colour);
     text-decoration: none;
 }
 
@@ -63,19 +68,19 @@ body {
 }
 
 .navbar-menu-item:hover {
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
+    border-bottom: 2px solid var(--contrast-colour);
+    border-top: 2px solid var(--contrast-colour);
 }
 
 .navbar-menu-link {
     text-decoration: none;
-    color: black;
+    color: var(--text-colour);
 }
 
 .navbar-login-btn {
     font-size: 2rem;
     text-decoration: none;
-    color: black;
+    color: var(--text-colour);
     margin-right: 2rem;
     border: 1px solid black;
     border-radius: 5px;
@@ -84,7 +89,7 @@ body {
 
 .navbar-login-btn:hover {
     background-color: var(--primary-colour);
-    color: white;
+    color: var(--background-colour);
 }
 
 /* Ab hier projects */
@@ -113,7 +118,7 @@ body {
 .project-name {
     font-weight: bold;
     text-decoration: none;
-    color: var(--primary-colour);
+    color: var(--text-colour);
     margin-top: 1rem;
 }
 .project-name:hover {
@@ -123,7 +128,7 @@ body {
 .project-user {
     font-weight: 300;
     text-decoration: none;
-    color: grey;
+    color: var(--text-colour);
     font-size: 1.5rem;
     margin-top: 0.5rem;
 }
@@ -134,7 +139,7 @@ body {
 .project-pattern {
     font-weight: 400;
     text-decoration: none;
-    color: #222222;
+    color: var(--text-colour);
     margin-top: 0.5rem;
 }
 .project-pattern:hover {
@@ -199,7 +204,7 @@ body {
 .pattern-name {
     font-weight: bold;
     text-decoration: none;
-    color: #228e8a;
+    color: var(--text-colour);
     margin-top: 1rem;
 }
 .pattern-name:hover {
@@ -209,7 +214,7 @@ body {
 .pattern-publisher {
     font-weight: 300;
     text-decoration: none;
-    color: grey;
+    color: var(--text-colour);
     font-size: 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
