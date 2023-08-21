@@ -1,0 +1,40 @@
+digraph G {
+
+
+    pattern[label="Pattern \n int: difficulty; \n"];
+    project[label="Project
+    string: name;
+    date: created_on;
+    date: finished_on;"];
+    user[label="User
+    string: name;
+    string: email; 
+    string: password;"];
+    fabric[label="Fabric
+    string: name;"];
+    
+    attributes_p[label="pattern attributes"];
+    attributes_f[label="fabric attributes"];
+    fabric_types[label="fabric types"];
+    pattern_cat[label="pattern_category"];
+    
+    
+    project->pattern [label="has_pattern"];
+    project->fabric[label="uses_fabric"];
+    
+    user->project [label="created_project"];
+    user->pattern[label="has_favourites"];
+    user->pattern[label="has_in_library"];
+    user->pattern[label="has_in_queue"];
+    user->fabric[label="has_in_stash"]
+    user->fabric[label="has_in_favourites"]
+    
+    pattern->attributes_p[label="has_attribute"];
+    pattern->fabric[label="recommends_fabric"];
+    pattern->pattern_cat[label="has_category"];
+    pattern->project[label="projects_using_this_pattern"];
+    
+    fabric->attributes_f[label="has_attribute"];
+    fabric->fabric_types[label="has_type"]
+
+}
