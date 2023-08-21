@@ -1,15 +1,21 @@
 digraph G {
 
 
-    pattern[label="Pattern \n int: difficulty; \n"];
+    pattern[label="Pattern 
+    int: difficulty;
+    float: needed_fabric_metric;
+    float: needed_fabric_imperial;"];
+    
     project[label="Project
     string: name;
     date: created_on;
     date: finished_on;"];
+    
     user[label="User
     string: name;
     string: email; 
     string: password;"];
+    
     fabric[label="Fabric
     string: name;"];
     
@@ -23,10 +29,10 @@ digraph G {
     project->fabric[label="uses_fabric"];
     
     user->project [label="created_project"];
-    user->pattern[label="has_favourites"];
+    user->pattern[label="has_in_favourites"];
     user->pattern[label="has_in_library"];
     user->pattern[label="has_in_queue"];
-    user->fabric[label="has_in_stash"]
+    user->fabric[label="has_in_stash"]; // no prio, nice to have
     user->fabric[label="has_in_favourites"]
     
     pattern->attributes_p[label="has_attribute"];
