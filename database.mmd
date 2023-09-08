@@ -1,0 +1,86 @@
+erDiagram
+
+    AppUser {
+        int id
+        string username
+        string email
+        string password
+        date sewing_since
+        set sewingmachine
+    }
+    Pattern {
+        int id
+        int difficulty
+        string img_url
+        string publisher
+        string published_in
+        date publishing_date
+        float community_rating_difficulty
+        float community_rating
+    }
+    Project {
+        int id
+        string name
+        date started_on
+        date finished_on
+        string img_url
+    }
+    PatternCategory {
+        int id
+        sting name
+    }
+    PatternAttributes {
+        int id
+        sting name
+    }
+    PatternTechniques {
+        int id
+        sting name
+    }
+    Fabric {
+        int id
+        sting name
+    }
+    PatternFabric {
+        int id 
+        float length
+    }
+    ProjectFabric {
+        int id 
+        float length
+    }
+    FabricType {
+        int id
+        sting name
+    }
+    UserLibrary {
+        int id
+        int user_id 
+    }
+    UserQueue {
+        int id
+        int user_id 
+    }
+    UserFavourites {
+        int id
+        int user_id 
+    }
+
+
+    AppUser |{--o{ Project : creates
+    AppUser |{--o{ UserLibrary : has
+    AppUser |{--o{ UserQueue : has
+    AppUser |{--o{ UserFavourites : has
+    UserLibrary |{--o{ Pattern : contains
+    UserQueue |{--o{ Pattern : contains
+    UserFavourites |{--o{ Pattern : contains
+    Project ||--o{ Pattern : uses
+    Project |{--o{ Fabric : uses
+    Pattern |{--o{ PatternFabric : recommends
+    FabricType ||--o{ PatternFabric : length_needed
+    Project |{--o{ ProjectFabric : length_needed
+    Fabric ||--o{ ProjectFabric : length_needed
+    Fabric ||--o{ FabricType : is
+    Pattern |{--o{ PatternCategory : is_category
+    Pattern |{--o{ PatternAttributes : has_attributes
+    Pattern |{--o{ PatternTechniques : uses_technique
