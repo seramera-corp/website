@@ -179,7 +179,7 @@ body {
     margin: 10px;
 }
 
-/* for detailed pattern */
+/* for detailed pattern (single page) */
 .pattern-container {
     display: flex;
     flex-direction: column;
@@ -224,6 +224,17 @@ body {
     height: 20rem;
     width: 100%;
     object-fit: cover;
+}
+
+.pattern-details {
+}
+
+.pattern-fabric {
+    text-decoration: none;
+}
+
+pattern-fabric-length {
+    text-decoration: none;
 }
 
 .pattern-projects {
