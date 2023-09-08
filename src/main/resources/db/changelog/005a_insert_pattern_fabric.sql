@@ -1039,3 +1039,10 @@ values ((SELECT id FROM pattern WHERE name = 'Gesmockter Jogging-Badeanzug'), 11
 insert into pattern_fabric (pattern_id, fabrictype_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bestickte Jeans '), 8, 4.0) ;
 
+-- out hand written patterns/projects
+insert into pattern_fabric (pattern_id, fabrictype_id, fabric_length)
+values ((SELECT id FROM pattern WHERE name = 'Fancy Shirt'), 3, 12.0) ;
+insert into pattern_fabric (pattern_id, fabrictype_id, fabric_length)
+values ((SELECT id FROM pattern WHERE name = 'Smooth Pants'), 1, 3.0) ;
+insert into pattern_fabric (pattern_id, fabrictype_id, fabric_length)
+values ((SELECT id FROM pattern WHERE name = 'Large Hat'), 12, 5.0) ;
