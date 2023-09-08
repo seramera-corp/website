@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <include file="changelog/001_app_user.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/001a_insert_app_user.sql" relativeToChangelogFile="true"/>
     <include file="changelog/002_pattern.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/002a_insert_pattern.sql" relativeToChangelogFile="true"/>
     <include file="changelog/003_project.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/004_insert_app_user.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/005_insert_pattern_project.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/006_insert_pattern.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/003a_insert_pattern_project.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/004_fabrictype.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/004a_insert_fabrictype.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/005_pattern_fabric.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/005a_insert_pattern_fabric.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
