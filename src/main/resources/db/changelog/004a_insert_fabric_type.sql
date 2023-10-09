@@ -1,0 +1,17 @@
+insert into fabric_type (name) values ('Cotton');
+insert into fabric_type (name) values ('Silk');
+insert into fabric_type (name) values ('Polyester');
+insert into fabric_type (name) values ('Linen');
+insert into fabric_type (name) values ('Wool');
+insert into fabric_type (name) values ('Nylon');
+insert into fabric_type (name) values ('Rayon');
+insert into fabric_type (name) values ('Modal');
+insert into fabric_type (name) values ('Velvet');
+insert into fabric_type (name) values ('Denim');
+insert into fabric_type (name) values ('Chiffon');
+insert into fabric_type (name) values ('Satin');
+insert into fabric_type (name) values ('Canvas');
+insert into fabric_type (name) values ('Musselin');
+insert into fabric_type (name) values ('Flannel');
+insert into fabric_type (name) values ('Jersey');
+insert into fabric_type (name) values ('Fleece');
