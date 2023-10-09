@@ -91,6 +91,15 @@ fun Route.patterns() {
     """.trimMargin()
     )
 
+    // CREATE statement for new pattern
+    val createPatternStatement = dbConnection.prepareStatement(
+        """
+    | insert into pattern (name, publisher, difficulty, published_in) 
+    | values (?, ?, ?, ?) 
+    | returning id;
+    """.trimMargin()
+    )
+
     // GET for search
     get("/pattern") {
         val searchParam = call.request.queryParameters["pattern-search"]
@@ -105,6 +114,33 @@ fun Route.patterns() {
 
         val res = ThymeleafContent("patterns.html", mapOf("patterns" to patterns))
         call.respond(res)
+    }
+
+    // GET for create
+    get("/pattern/create") {
+
+        val res = ThymeleafContent("pattern_create.html", mapOf())
+        call.respond(res)
+    }
+
+    // POST for create
+    post("/pattern/create") {
+        val nameParam = call.request.queryParameters["name"]
+        val publisherParam = call.request.queryParameters["publisher"]
+        val fabricParam = call.request.queryParameters["fabric"]
+        val publishedInParam = call.request.queryParameters["published_in"]
+        val difficultyParam = call.request.queryParameters["difficulty"]
+
+        createPatternStatement.setString(1, nameParam?:"")
+        createPatternStatement.setString(2, publisherParam?:"")
+        createPatternStatement.setString(3, difficultyParam?:"")
+        createPatternStatement.setString(4, publishedInParam?:"")
+        val resultSet = createPatternStatement.executeQuery()
+        val pattern = Pattern()
+        //TODO fabric id in pattern_fabric table
+        //TODO url
+
+        call.respondRedirect(url)
     }
 
     // GET for detail
