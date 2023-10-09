@@ -65,7 +65,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Kinder-Badehose'), 9, 7.9107362995817105) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Mantel'), 0, 4.3229574202191134) ;
+values ((SELECT id FROM pattern WHERE name = 'Mantel'), 1, 4.3229574202191134) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Kurzer Jeans-Mantel'), 10, 5.076672791030067) ;
@@ -125,10 +125,10 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Frühlings-Jacke'), 13, 3.671406183571092) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Gepunkteter Cocktail-Hut'), 0, 9.441164721060558) ;
+values ((SELECT id FROM pattern WHERE name = 'Gepunkteter Cocktail-Hut'), 1, 9.441164721060558) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Leichte Weihnachts-Tasche'), 0, 7.158445772460152) ;
+values ((SELECT id FROM pattern WHERE name = 'Leichte Weihnachts-Tasche'), 1, 7.158445772460152) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gerüschtes Patchwork-Hemd'), 1, 2.1928220193587866) ;
@@ -221,7 +221,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bestickte Leinen-Hose'), 5, 1.8766427803890018) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Gesteppte Männer-Unterhose'), 0, 8.471545956217707) ;
+values ((SELECT id FROM pattern WHERE name = 'Gesteppte Männer-Unterhose'), 1, 8.471545956217707) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Frauen-Sweat-shirt'), 14, 5.470861634360061) ;
@@ -245,7 +245,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Warmer Weihnachts-Anzug'), 8, 8.772955222372508) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Leichter Baby -BH'), 0, 3.9110262653302366) ;
+values ((SELECT id FROM pattern WHERE name = 'Leichter Baby -BH'), 1, 3.9110262653302366) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Hochzeits-Top'), 12, 6.856246664718418) ;
@@ -290,7 +290,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bestickte Jeans-Tasche'), 10, 5.356833108921984) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Gerüschte Party-Hose'), 0, 9.696720708310993) ;
+values ((SELECT id FROM pattern WHERE name = 'Gerüschte Party-Hose'), 1, 9.696720708310993) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Enge Frauen-Badehose'), 14, 9.817219079929222) ;
@@ -338,7 +338,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gestreifter Sommer-Bikini'), 7, 9.912401962625932) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Leinen-Corsage'), 0, 3.6030683133888672) ;
+values ((SELECT id FROM pattern WHERE name = 'Leinen-Corsage'), 1, 3.6030683133888672) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bestickter Party-Blazer'), 3, 6.835256834038223) ;
@@ -347,7 +347,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Langer Baumwoll-Rock'), 6, 6.728896781070991) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Lange Frauen-Jacke'), 0, 6.94405675367037) ;
+values ((SELECT id FROM pattern WHERE name = 'Lange Frauen-Jacke'), 1, 6.94405675367037) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bestickte Leinen-Bluse'), 11, 2.7181833337973647) ;
@@ -410,13 +410,13 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gerüschter Hochzeits-BH'), 7, 0.17585787760408533) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Sanftes Hochzeits-Top'), 0, 8.201348001421195) ;
+values ((SELECT id FROM pattern WHERE name = 'Sanftes Hochzeits-Top'), 1, 8.201348001421195) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Viskose-Mantel'), 6, 5.484265922453188) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Leichtes Patchwork-T-Shirt'), 0, 3.555678447746801) ;
+values ((SELECT id FROM pattern WHERE name = 'Leichtes Patchwork-T-Shirt'), 1, 3.555678447746801) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Langes Kinder-Sweatshirt'), 2, 8.565934908704913) ;
@@ -530,7 +530,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gemütliche Sommer-Bluse'), 15, 3.047338908445787) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Gerüschte Sommer-Jacke'), 0, 6.179603309444407) ;
+values ((SELECT id FROM pattern WHERE name = 'Gerüschte Sommer-Jacke'), 1, 6.179603309444407) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'BH'), 5, 9.996532635567435) ;
@@ -572,7 +572,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gesteppter Sommer-Blazer'), 12, 6.529708972919) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Kleid'), 0, 6.703567282144838) ;
+values ((SELECT id FROM pattern WHERE name = 'Kleid'), 1, 6.703567282144838) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Warmer Viskose-Hut'), 4, 2.5320042676678467) ;
@@ -758,7 +758,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gesmocktes Wickel-Oberteil'), 15, 4.364121519946895) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Weihnachts-Badeanzug'), 0, 3.005572906847674) ;
+values ((SELECT id FROM pattern WHERE name = 'Weihnachts-Badeanzug'), 1, 3.005572906847674) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Sanftes Jogging-Hemd'), 1, 5.692529113465054) ;
@@ -773,10 +773,10 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Flauschiges Cord-Oberteil'), 15, 6.2251283176808725) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Gesmockter Party-Badeanzug'), 0, 5.226003042842264) ;
+values ((SELECT id FROM pattern WHERE name = 'Gesmockter Party-Badeanzug'), 1, 5.226003042842264) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Langes Übergangs-T-Shirt'), 0, 2.1350489901691927) ;
+values ((SELECT id FROM pattern WHERE name = 'Langes Übergangs-T-Shirt'), 1, 2.1350489901691927) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bluse'), 9, 6.569348539602049) ;
@@ -821,7 +821,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gerüschtes Männer-T-Shirt'), 9, 6.530245578893497) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Übergroßer Viskose-BH'), 0, 4.309131992755727) ;
+values ((SELECT id FROM pattern WHERE name = 'Übergroßer Viskose-BH'), 1, 4.309131992755727) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gesteppter Frauen-Badeanzug'), 5, 1.2157532687136552) ;
@@ -851,7 +851,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Sommer-Badehose'), 12, 8.722913552877715) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Asiatische Party-Jacke'), 0, 9.627158047810775) ;
+values ((SELECT id FROM pattern WHERE name = 'Asiatische Party-Jacke'), 1, 9.627158047810775) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Leinen-T-Shirt'), 14, 5.774253370222936) ;
@@ -1025,7 +1025,7 @@ insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Gesteppte Jeans-Jacke'), 11, 8.328040077977327) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
-values ((SELECT id FROM pattern WHERE name = 'Enges Übergangs-Top'), 0, 1.5200244350762881) ;
+values ((SELECT id FROM pattern WHERE name = 'Enges Übergangs-Top'), 1, 1.5200244350762881) ;
 
 insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length)
 values ((SELECT id FROM pattern WHERE name = 'Bestickter Kinder-Anzug'), 9, 1.0762128845579844) ;
