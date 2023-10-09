@@ -1,7 +1,7 @@
 insert into pattern (name, publisher)
 values ('Fancy Shirt', 'Burda');
 
-insert into pattern (name, publisher, rating)
+insert into pattern (name, publisher, difficulty)
 values ('Smooth Pants', 'Mara''s Sewing Recipes', 5);
 
 insert into pattern (name, publisher)

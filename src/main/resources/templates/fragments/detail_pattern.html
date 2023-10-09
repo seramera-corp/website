@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Details for a pattern</title>
+  <link rel="stylesheet" href="../../static/main.css">
+</head>
+<body>
+
+<div class="pattern-datails" th:fragment="pattern(pattern)">
+  Recommended fabric type:
+  <a class="pattern-fabric" href="" th:text="${pattern.fabrictype}">
+    Fabrictype
+  </a>
+  Recommended fabric length:
+  <a class="pattern-fabric_length" href="" th:text="${pattern.fabric_length}">
+    Fabric Length
+  </a> m
+</div>
+
+</body>
+</html>

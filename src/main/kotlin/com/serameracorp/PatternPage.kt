@@ -9,7 +9,12 @@ import io.ktor.server.thymeleaf.*
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 
-data class Pattern(val id: Int, val name: String, val publisher: String, val img_url: String)
+data class Pattern(val id: Int,
+                   val name: String,
+                   val publisher: String,
+                   val img_url: String,
+                   val fabric_length: Double = 0.0,
+                   val fabrictype:String = "not defined")
 
 fun Route.patterns() {
 
@@ -22,6 +27,17 @@ fun Route.patterns() {
             resultSet.getString("name"),
             resultSet.getString("publisher"),
             resultSet.getString("img_url")
+        )
+
+    // create pattern object from statement
+    fun patternDetailsFromResultSet(resultSet: ResultSet): Pattern =
+        Pattern(
+            resultSet.getInt("id"),
+            resultSet.getString("name"),
+            resultSet.getString("publisher"),
+            resultSet.getString("img_url"),
+            resultSet.getDouble("length"),
+            resultSet.getString("fabrictype")
         )
 
     // statement for search page
@@ -48,8 +64,12 @@ fun Route.patterns() {
     |   pattern.id as id,
     |   pattern.name as name,
     |   pattern.publisher as publisher,
-    |   pattern.img_url as img_url
+    |   pattern.img_url as img_url,
+    |   pattern_fabric.fabric_length as length,
+    |   fabrictype.name as fabrictype
     | from pattern 
+    | join pattern_fabric on pattern.id = pattern_fabric.pattern_id 
+    | join fabrictype on pattern_fabric.fabrictype_id = fabrictype.id 
     | where pattern.id = ?
     """.trimMargin()
     )
@@ -97,7 +117,7 @@ fun Route.patterns() {
         patternByIdStatement.setInt(1, patternId)
         val resultSet = patternByIdStatement.executeQuery()
         if (resultSet.next()) {
-            val pattern = patternFromResultSet(resultSet)
+            val pattern = patternDetailsFromResultSet(resultSet)
 
             projectByPatternStatement.setInt(1, patternId)
             val projectResults = projectByPatternStatement.executeQuery()

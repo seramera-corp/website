@@ -1,0 +1,46 @@
+digraph G {
+
+    // nodes
+    pattern[label="Pattern 
+    int: difficulty;
+    float: needed_fabric_metric;
+    float: needed_fabric_imperial;"];
+    
+    project[label="Project
+    string: name;
+    date: created_on;
+    date: finished_on;"];
+    
+    user[label="User
+    string: name;
+    string: email; 
+    string: password;"];
+    
+    fabric[label="Fabric
+    string: name;"];
+    
+    attributes_p[label="pattern attributes"]; // e.g. buttons, zipper, maxi length, ...
+    attributes_f[label="fabric attributes"]; // e.g. stiff, dotted, flowers, animal print, ...
+    fabric_types[label="fabric types"]; // e.g. cotton, viscose, cord, ...
+    pattern_cat[label="pattern_category"]; // e.g. pants, pullover, clothing, blanket, bag, ...
+    
+    // relationships
+    project->pattern [label="has_pattern"];
+    project->fabric[label="uses_fabric"];
+    
+    user->project [label="created_project"];
+    user->pattern[label="has_in_favourites"]; // which patterns does the user like?
+    user->pattern[label="has_in_library"]; // which patterns does the user own?
+    user->pattern[label="has_in_queue"]; // what does the user want to do next?
+    user->fabric[label="has_in_stash"]; // no prio, nice to have
+    user->fabric[label="has_in_favourites"]; // which fabric does the user like to wor kwith?
+    
+    pattern->attributes_p[label="has_attribute"];
+    pattern->fabric[label="recommends_fabric"];
+    pattern->pattern_cat[label="has_category"];
+    pattern->project[label="projects_using_this_pattern"];
+    
+    fabric->attributes_f[label="has_attribute"]; 
+    fabric->fabric_types[label="has_type"]
+
+}
