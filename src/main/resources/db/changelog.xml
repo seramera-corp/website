@@ -6,8 +6,8 @@
     <include file="changelog/002a_insert_pattern.sql" relativeToChangelogFile="true"/>
     <include file="changelog/003_project.sql" relativeToChangelogFile="true"/>
     <include file="changelog/003a_insert_pattern_project.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/004_fabrictype.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/004a_insert_fabrictype.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/004_fabric_type.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/004a_insert_fabric_type.sql" relativeToChangelogFile="true"/>
     <include file="changelog/005_pattern_fabric.sql" relativeToChangelogFile="true"/>
     <include file="changelog/005a_insert_pattern_fabric.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

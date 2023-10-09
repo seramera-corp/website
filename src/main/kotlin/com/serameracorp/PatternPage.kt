@@ -14,7 +14,7 @@ data class Pattern(val id: Int,
                    val publisher: String,
                    val img_url: String,
                    val fabric_length: Double = 0.0,
-                   val fabrictype:String = "not defined")
+                   val fabric_type:String = "not defined")
 
 fun Route.patterns() {
 
@@ -37,7 +37,7 @@ fun Route.patterns() {
             resultSet.getString("publisher"),
             resultSet.getString("img_url"),
             resultSet.getDouble("length"),
-            resultSet.getString("fabrictype")
+            resultSet.getString("fabric_type")
         )
 
     // statement for search page
@@ -66,10 +66,10 @@ fun Route.patterns() {
     |   pattern.publisher as publisher,
     |   pattern.img_url as img_url,
     |   pattern_fabric.fabric_length as length,
-    |   fabrictype.name as fabrictype
+    |   fabric_type.name as fabric_type
     | from pattern 
     | join pattern_fabric on pattern.id = pattern_fabric.pattern_id 
-    | join fabrictype on pattern_fabric.fabrictype_id = fabrictype.id 
+    | join fabric_type on pattern_fabric.fabric_type_id = fabric_type.id 
     | where pattern.id = ?
     """.trimMargin()
     )
