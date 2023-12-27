@@ -149,6 +149,7 @@ body {
 /* Ab hier pattern */
 .pattern-search-container {
     display: flex;
+    margin-top: 1rem;
     justify-content: center;
     flex-wrap: wrap;
     width: 60%

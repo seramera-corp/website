@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Pattern</title>
+  <link rel="stylesheet" th:href="'/static/main.css'" href="../static/main.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<form method="post">
+
+  <fieldset>
+    <legend>Create new pattern</legend>
+  <label for="name">Pattern name</label>
+  <input
+          placeholder="Name"
+          type="text"
+          name="name"
+          id="name"
+  ><br>
+
+  <label for="publisher">Pattern publisher</label>
+  <select
+          name="publisher"
+          id="publisher"
+  >
+    <option value="1">Burda</option>
+    <option value="2">Simplicity</option>
+    <option value="3">Butterick</option>
+  </select><br>
+
+  <label for="fabric">Recommended fabric</label>
+  <select
+          name="fabric"
+          id="fabric"
+  >
+    <option value="1">Cotton</option>
+    <option value="2">Velvet</option>
+    <option value="3">Silk</option>
+  </select><br>
+
+  <label for="published_in">Published in</label>
+  <input
+          placeholder="Heft 01/2023"
+          type="text"
+          name="published_in"
+          id="published_in"
+  > <br>
+
+  <label for="difficulty">Difficulty</label>
+  <input
+          placeholder="2/5"
+          type="text"
+          name="difficulty"
+          id="difficulty"
+  >
+
+
+  </fieldset>
+
+
+  <button type="submit" class="btn">
+    Create
+  </button>
+</form>
+
+
+
+</body>
+</html>
