@@ -3,6 +3,7 @@ package com.serameracorp
 import com.serameracorp.plugins.connectToPostgres
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.thymeleaf.*
@@ -100,6 +101,15 @@ fun Route.patterns() {
     """.trimMargin()
     )
 
+    // CREATE statement for new fabric pattern relation
+    val createPatternFabricStatement = dbConnection.prepareStatement(
+        """
+    | insert into pattern_fabric (pattern_id, fabric_type_id) 
+    | values (?, ?) 
+    | returning id;
+    """.trimMargin()
+    )
+
     // GET for search
     get("/pattern") {
         val searchParam = call.request.queryParameters["pattern-search"]
@@ -125,22 +135,26 @@ fun Route.patterns() {
 
     // POST for create
     post("/pattern/create") {
-        val nameParam = call.request.queryParameters["name"]
-        val publisherParam = call.request.queryParameters["publisher"]
-        val fabricParam = call.request.queryParameters["fabric"]
-        val publishedInParam = call.request.queryParameters["published_in"]
-        val difficultyParam = call.request.queryParameters["difficulty"]
+        val formParams = call.receiveParameters()
+        val nameParam = formParams["name"]
+        val publisherParam = formParams["publisher"]
+        val fabricParam = formParams["fabric"]
+        val publishedInParam = formParams["published_in"]
+        val difficultyParam = formParams["difficulty"]
 
         createPatternStatement.setString(1, nameParam?:"")
         createPatternStatement.setString(2, publisherParam?:"")
         createPatternStatement.setString(3, difficultyParam?:"")
         createPatternStatement.setString(4, publishedInParam?:"")
         val resultSet = createPatternStatement.executeQuery()
-        val pattern = Pattern()
-        //TODO fabric id in pattern_fabric table
-        //TODO url
+        resultSet.next()
+        val patternId = resultSet.getInt("id")
+        val fabricId = fabricParam!!.toInt()
+        createPatternFabricStatement.setInt(1,patternId)
+        createPatternFabricStatement.setInt(2, fabricId)
+        createPatternFabricStatement.executeQuery()
 
-        call.respondRedirect(url)
+        call.respondRedirect("/pattern/$patternId")
     }
 
     // GET for detail
