@@ -4,11 +4,11 @@
     font-family: "Montserrat", sans-serif;
     font-size: 10px;
 
-    --primary-colour: #74B5C5;
-    --secondary-colour: #5BA199;
-    --contrast-colour: #fcd474;
-    --background-colour: #FFFFFF;
-    --text-colour: #144648;
+  --primary-colour: #54A19B; /* Fresh Seafoam Green */
+  --secondary-colour: #61C0BF; /* Aquatic Blue-Green */
+  --contrast-colour: #A8E1DB; /* Minty Fresh Green */
+  --background-colour: #F0F0F0; /* Light Silver Gray */
+  --text-colour: #333333; /* Dark Gray */
 }
 
 
@@ -38,7 +38,7 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    box-shadow: #AABBAA 0px 2px 5px;
+    box-shadow: var(--primary-colour) 0px 2px 5px;
 }
 
 .navbar-logo {
@@ -149,7 +149,7 @@ body {
 /* Ab hier pattern */
 .pattern-search-container {
     display: flex;
-    margin-top: 1rem;
+    margin-top: 2rem;
     justify-content: center;
     flex-wrap: wrap;
     width: 60%
@@ -165,6 +165,13 @@ body {
 }
 
 .pattern-search-input {
+    padding: 1rem 0.5rem;
+}
+
+.pattern-create-btn {
+    margin-top: 1rem;
+    margin-left: 3rem;
+    align-self: flex-end;
     padding: 1rem 0.5rem;
 }
 
@@ -190,42 +197,46 @@ body {
 }
 
 .pattern {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: 1px 1px 4px grey;
-    width: 200px;
-    height: 250px;
-    padding: 10px;
-    margin: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--background-colour);
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px grey;
+  width: 200px;
+  height: 250px;
+  padding: 10px;
+  margin: 10px;
 }
 
+/* Split into 20% (name), 80% (image) and the rest */
 .pattern-name {
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--text-colour);
-    margin-top: 1rem;
+  flex: 1;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-colour);
+  margin-top: 1rem;
 }
 .pattern-name:hover {
-    text-decoration: underline;
-}
-
-.pattern-publisher {
-    font-weight: 300;
-    text-decoration: none;
-    color: var(--text-colour);
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+  text-decoration: underline;
 }
 
 .pattern-img {
-    height: 20rem;
-    width: 100%;
-    object-fit: cover;
+  flex: 4;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
+
+/* The rest of the content, now only publisher */
+.pattern-publisher {
+  font-weight: 300;
+  text-decoration: none;
+  color: var(--text-colour);
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 
 .pattern-details {
 }
