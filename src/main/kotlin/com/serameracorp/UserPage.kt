@@ -22,6 +22,51 @@ fun Route.user() {
             resultSet.getString("machine")
         )
 
+    // SQL Statement for fetching all users
+    val allUsersStatement = dbConnection.prepareStatement(
+        """
+    | select
+    |   id,
+    |   username as name,
+    |   sewingmachine as machine
+    | from app_user LIMIT 25
+    """.trimMargin()
+    )
+
+    // GET for users with pagination
+    get("/users") {
+        val page = call.request.queryParameters["page"]?.toIntOrNull() ?: 0
+        val size = call.request.queryParameters["size"]?.toIntOrNull() ?: 25
+
+        val pagedUsersStatement = dbConnection.prepareStatement(
+            """
+        | select
+        |   id,
+        |   username as name,
+        |   sewingmachine as machine
+        | from app_user
+        | limit ? offset ?
+        """.trimMargin()
+        )
+
+        pagedUsersStatement.setInt(1, size)
+        pagedUsersStatement.setInt(2, page * size)
+
+        val resultSet = pagedUsersStatement.executeQuery()
+        val users = sequence {
+            while (resultSet.next()) {
+                yield(userFromResultSet(resultSet))
+            }
+        }.toList()
+
+        val res = ThymeleafContent("users.html", mapOf(
+            "users" to users,
+            "currentPage" to page,
+            "size" to size
+        ))
+        call.respond(res)
+    }
+
     // statement for detail page of user
     val userByIdStatement = dbConnection.prepareStatement(
         """

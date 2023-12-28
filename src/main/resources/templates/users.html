@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Look at my projects!</title>
+  <link rel="stylesheet" href="/static/main.css">
+</head>
+
+<body>
+  <div th:replace="~{fragments/header :: header}">&nbsp;</div>
+
+  <div id="usersContainer">
+    <div th:each="user : ${users}">
+      <a th:href="@{~/user/{id}(id=${user.id})}">
+        <span th:text="${user.name}">Test User</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- this button does not load more users since there are none -->
+  <form th:action="@{~/users}" method="get">
+    <input type="hidden" name="page" th:value="${currentPage + 1}">
+    <input type="hidden" name="size" th:value="${size}">
+    <button type="submit" class="btn">Load More</button>
+  </form>
+
+</body>
+</html>
