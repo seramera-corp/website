@@ -23,9 +23,11 @@
             <button type="submit" class="btn">Search</button>
         </div>
     </form>
-    <a href="/pattern/create" class="btn">
-        + New
-    </a>
+    <section class="pattern-create-btn">
+        <a href="/pattern/create" class="btn">
+            + Add new pattern
+        </a>
+    </section>
     <section class="pattern-search-result">
         <div class="patterns">
             <div th:each="pattern : ${patterns}"
