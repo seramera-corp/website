@@ -18,7 +18,7 @@
         My Awesome Project
     </a>
     <a class="project-user"
-       href=""
+       th:href="|/user/${project.app_user_id}|"
        th:text="${project.user}">
         Example User
     </a>

@@ -86,6 +86,7 @@ fun Route.user() {
     |   project.id as id,
     |   project.name as name,
     |   project.pattern_id as pattern_id,
+    |   project.app_user_id as app_user_id,
     |   pattern.name as pattern,
     |   app_user.username as user,
     |   app_user.id as user_id
