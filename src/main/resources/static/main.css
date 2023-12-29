@@ -38,7 +38,7 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    box-shadow: var(--primary-colour) 0px 2px 5px;
+    box-shadow: var(--primary-colour) 0 2px 5px;
 }
 
 .navbar-logo {
@@ -101,7 +101,7 @@ body {
 .project {
     display: flex;
     flex-direction: column;
-    border: 1px solid gray;
+    border: 1px solid grey;
     border-radius: 5px;
     box-shadow: 1px 1px 5px grey;
     width: 20rem;
@@ -152,7 +152,7 @@ body {
     margin-top: 2rem;
     justify-content: center;
     flex-wrap: wrap;
-    width: 60%
+    width: 60%;
     padding: 4rem;
 }
 
@@ -191,7 +191,7 @@ body {
 .pattern-container {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     flex-flow: wrap;
     font-size: 1.6rem;
 }
@@ -245,7 +245,7 @@ body {
     text-decoration: none;
 }
 
-pattern-fabric-length {
+.pattern-fabric-length {
     text-decoration: none;
 }
 
@@ -253,7 +253,7 @@ pattern-fabric-length {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid grey;
     border-radius: 5px;
     box-shadow: 1px 1px 4px grey;
     width: 60%;
@@ -266,7 +266,7 @@ pattern-fabric-length {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid grey;
     border-radius: 5px;
     box-shadow: 1px 1px 4px grey;
     width: 60%;
