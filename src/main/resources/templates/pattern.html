@@ -27,9 +27,10 @@
                 </tr>
                 <tr>
                     <td>Fabrics</td>
-                    <td th:text="|${pattern.fabric_type} - ${pattern.fabric_length}m|">
-                        Silky Milky - 5,30m<br>
-                        Cool Cord - 2,70m
+                    <td>
+                        <ul th:each="fabric : ${pattern.patternFabric}">
+                            <li th:text="|${fabric.fabric_type} - ${fabric.length}|">Silky Milky - 5,30m</li>
+                        </ul>
                     </td>
                 </tr>
                 </tbody>
