@@ -15,8 +15,18 @@ data class Pattern(
     val name: String,
     val publisher: String,
     val img_url: String,
-    val fabric_length: Double = 0.0,
-    val fabric_type: String = "not defined"
+    val patternFabric: MutableList<PatternFabric> = mutableListOf(),
+)
+data class PatternFabric(
+    val fabric_type: String,
+    val length: Double
+)
+
+data class PatternFabricDetails(
+val id: Int,
+val name: String,
+val length: Double,
+val fabric_type: String
 )
 
 fun Route.patterns() {
@@ -39,8 +49,6 @@ fun Route.patterns() {
             resultSet.getString("name"),
             resultSet.getString("publisher"),
             resultSet.getString("img_url"),
-            resultSet.getDouble("length"),
-            resultSet.getString("fabric_type")
         )
 
     // statement for search page
@@ -67,13 +75,21 @@ fun Route.patterns() {
     |   pattern.id as id,
     |   pattern.name as name,
     |   pattern.publisher as publisher,
-    |   pattern.img_url as img_url,
+    |   pattern.img_url as img_url
+    | from pattern 
+    | where pattern.id = ?
+    """.trimMargin()
+    )
+
+    // statement for fabrics matching the pattern
+    val patternFabricByPatternIdStatement = dbConnection.prepareStatement(
+    """
+    | select
     |   pattern_fabric.fabric_length as length,
     |   fabric_type.name as fabric_type
-    | from pattern 
-    | join pattern_fabric on pattern.id = pattern_fabric.pattern_id 
-    | join fabric_type on pattern_fabric.fabric_type_id = fabric_type.id 
-    | where pattern.id = ?
+    | from pattern_fabric
+    | join fabric_type on pattern_fabric.fabric_type_id = fabric_type.id
+    | where pattern_fabric.pattern_id = ?
     """.trimMargin()
     )
 
@@ -169,8 +185,20 @@ fun Route.patterns() {
 
         patternByIdStatement.setInt(1, patternId)
         val resultSet = patternByIdStatement.executeQuery()
+        patternFabricByPatternIdStatement.setInt(1, patternId)
+        val fabricPatternResultSet = patternFabricByPatternIdStatement.executeQuery()
         if (resultSet.next()) {
+            // no fabric details yet
             val pattern = patternDetailsFromResultSet(resultSet)
+            // now add fabrics
+            while (fabricPatternResultSet.next()) {
+                pattern.patternFabric.add(
+                    PatternFabric(
+                        fabricPatternResultSet.getString("fabric_type"),
+                        fabricPatternResultSet.getDouble("length"),
+                    )
+                )
+        }
 
             projectByPatternStatement.setInt(1, patternId)
             val projectResults = projectByPatternStatement.executeQuery()
