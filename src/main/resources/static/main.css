@@ -19,6 +19,11 @@ body {
     background-color: var(--background-colour);
 }
 
+main {
+  max-width: 1024px;
+  margin: 2rem auto;
+}
+
 /* Utility classes */
 .btn {
     text-decoration: none;
@@ -190,10 +195,28 @@ body {
 /* for detailed pattern (single page) */
 .pattern-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-flow: wrap;
-    font-size: 1.6rem;
+    flex-direction: row;
+}
+
+.pattern-image {
+  padding-right: 1rem;
+  width: 33%;
+}
+
+.pattern-details {
+  width: 67%;
+}
+
+.pattern-details__name {
+    margin: 0 0 1rem 0;
+}
+
+.pattern-details td {
+  padding-right: 4rem;
+}
+
+.pattern-details__description {
+  margin-top: 2rem;
 }
 
 .pattern {
@@ -235,10 +258,6 @@ body {
   font-size: 1.5rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-}
-
-
-.pattern-details {
 }
 
 .pattern-fabric {

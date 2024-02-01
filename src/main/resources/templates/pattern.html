@@ -8,20 +8,47 @@
 <body>
 
 <div th:replace="~{fragments/header :: header}">&nbsp;</div>
+<main>
 
-<h1>Pattern Details</h1>
-<div class="pattern-container">
-    <div th:replace="fragments/cards :: pattern(${pattern})"></div>
-</div>
+    <div class="pattern-container">
+        <div class="pattern-image">
+            <img class="pattern-img"
+                 src="https://www.burdastyle.de/media/catalog/product/cache/769afddc87bd82b6de6c6e6e5f3b4aaf/H/K/HKAT_5841_2024FS_Heft_1.jpg"
+                 alt="An image for the project">
+        </div>
+        <div class="pattern-details">
+            <h2 class="pattern-details__name"
+                th:text="${pattern.name}">My Fancy Pattern</h2>
+            <table>
+                <tbody>
+                <tr>
+                    <td>Publisher</td>
+                    <td th:text="${pattern.publisher}">Burda</td>
+                </tr>
+                <tr>
+                    <td>Fabrics</td>
+                    <td th:text="|${pattern.fabric_type} - ${pattern.fabric_length}m|">
+                        Silky Milky - 5,30m<br>
+                        Cool Cord - 2,70m
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="pattern-details__description" th:text="'Beschreibungstext'">
+                Echte Allrounder für den Frühling nähst du mit diesem Schnittmuster-Set! Mit Hemdkragen und eingereihtem
+                Rockteil hat dieses Kleid sowohl klassische als auch feminine Elemente und eignet sich so für wirklich
+                jeden
+                Anlass. Auch die Tunika kann damit glänzen und kann so für verschiedenste Looks gestylt werden. Näh dir
+                diese curvy Schnitte bis Größe 60 jetzt selbst!
+            </div>
+        </div>
+    </div>
 
-<div class="pattern-details-container">
-    <div th:replace="fragments/detail_pattern :: pattern(${pattern})"></div>
-</div>
-
-
-<h2>Recently finished projects using this pattern</h2>
-<div class="pattern-projects">
-    <div th:each="project : ${projects}" th:insert="~{fragments/cards :: project(${project})}" th:remove="tag"></div>
-</div>
+    <h2>Recently finished projects using this pattern</h2>
+    <div class="pattern-projects">
+        <div th:each="project : ${projects}" th:insert="~{fragments/cards :: project(${project})}"
+             th:remove="tag"></div>
+    </div>
+</main>
 </body>
 </html>

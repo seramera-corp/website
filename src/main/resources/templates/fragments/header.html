@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Pattern Search</title>
-  <link rel="stylesheet" href="/static/main.css" media="screen">
+    <meta charset="UTF-8">
+    <title>Pattern Search</title>
+    <link rel="stylesheet" href="/static/main.css" media="screen">
 </head>
 <body>
 
-<nav class="navbar" th:fragment="header">
+<header th:fragment="header">
 
-  <div class="navbar-logo">
-    <a class="navbar-logo-text" href="/">SeraMera</a>
-  </div>
+    <nav class="navbar">
 
-  <ul class="navbar-menu">
-    <li class="navbar-menu-item">
-      <a class="navbar-menu-link" href="/pattern">Patterns</a>
-    </li>
-    <li class="navbar-menu-item">
-      <a class="navbar-menu-link" href="/project">Projects</a>
-    </li>
-    <li class="navbar-menu-item">
-      <a class="navbar-menu-link" href="/users" >Users</a>
-    </li>
-  </ul>
+        <div class="navbar-logo">
+            <a class="navbar-logo-text" href="/">SeraMera</a>
+        </div>
 
-  <div class="navbar-login">
-    <a href="" class="navbar-login-btn">Login</a>
-  </div>
+        <ul class="navbar-menu">
+            <li class="navbar-menu-item">
+                <a class="navbar-menu-link" href="/pattern">Patterns</a>
+            </li>
+            <li class="navbar-menu-item">
+                <a class="navbar-menu-link" href="/project">Projects</a>
+            </li>
+            <li class="navbar-menu-item">
+                <a class="navbar-menu-link" href="/users">Users</a>
+            </li>
+        </ul>
 
-</nav>
-
+        <div class="navbar-login">
+            <a href="" class="navbar-login-btn">Login</a>
+        </div>
+    </nav>
+</header>
 </body>
 </html>
