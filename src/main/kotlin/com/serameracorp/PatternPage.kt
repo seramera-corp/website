@@ -10,12 +10,14 @@ import io.ktor.server.thymeleaf.*
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 
-data class Pattern(val id: Int,
-                   val name: String,
-                   val publisher: String,
-                   val img_url: String,
-                   val fabric_length: Double = 0.0,
-                   val fabric_type:String = "not defined")
+data class Pattern(
+    val id: Int,
+    val name: String,
+    val publisher: String,
+    val img_url: String,
+    val fabric_length: Double = 0.0,
+    val fabric_type: String = "not defined"
+)
 
 fun Route.patterns() {
 
@@ -143,15 +145,15 @@ fun Route.patterns() {
         val publishedInParam = formParams["published_in"]
         val difficultyParam = formParams["difficulty"]
 
-        createPatternStatement.setString(1, nameParam?:"")
-        createPatternStatement.setString(2, publisherParam?:"")
-        createPatternStatement.setString(3, difficultyParam?:"")
-        createPatternStatement.setString(4, publishedInParam?:"")
+        createPatternStatement.setString(1, nameParam ?: "")
+        createPatternStatement.setString(2, publisherParam ?: "")
+        createPatternStatement.setString(3, difficultyParam ?: "")
+        createPatternStatement.setString(4, publishedInParam ?: "")
         val resultSet = createPatternStatement.executeQuery()
         resultSet.next()
         val patternId = resultSet.getInt("id")
         val fabricId = fabricParam!!.toInt()
-        createPatternFabricStatement.setInt(1,patternId)
+        createPatternFabricStatement.setInt(1, patternId)
         createPatternFabricStatement.setInt(2, fabricId)
         createPatternFabricStatement.executeQuery()
 
