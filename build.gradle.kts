@@ -9,7 +9,7 @@ plugins {
     kotlin("jvm") version "1.9.0"
     id("io.ktor.plugin") version "2.3.7"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
-    id("org.liquibase.gradle") version "2.0.4"
+    id("org.liquibase.gradle") version "2.2.1"
 }
 
 group = "com.serameracorp"
@@ -57,6 +57,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
     liquibaseRuntime("org.liquibase:liquibase-core:4.20.0")
+    liquibaseRuntime("info.picocli:picocli:4.6.1")
     liquibaseRuntime("org.postgresql:postgresql:$postgres_version")
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
