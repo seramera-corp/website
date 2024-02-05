@@ -34,3 +34,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Random OSX nonsense
+.DS_Store
