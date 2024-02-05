@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Create Pattern</title>
-  <link rel="stylesheet" th:href="'/static/main.css'" href="../static/main.css">
+    <meta charset="UTF-8">
+    <title>Create Pattern</title>
+    <link rel="stylesheet" th:href="'/static/main.css'" href="../static/main.css">
 </head>
 <body>
 
@@ -11,61 +11,93 @@
 
 <form method="post">
 
-  <fieldset>
-    <legend>Create new pattern</legend>
-  <label for="name">Pattern name</label>
-  <input
-          placeholder="Name"
-          type="text"
-          name="name"
-          id="name"
-  ><br>
+    <fieldset>
+        <legend>Create new pattern</legend>
+        <label for="name">Pattern name</label>
+        <input
+                placeholder="Name"
+                type="text"
+                name="name"
+                id="name"
+        ><br>
 
-  <label for="publisher">Pattern publisher</label>
-  <select
-          name="publisher"
-          id="publisher"
-  >
-    <option value="1">Burda</option>
-    <option value="2">Simplicity</option>
-    <option value="3">Butterick</option>
-  </select><br>
+        <label for="publisher">Pattern publisher</label>
+        <select
+                name="publisher"
+                id="publisher"
+        >
+            <option value="1">Burda</option>
+            <option value="2">Simplicity</option>
+            <option value="3">Butterick</option>
+        </select><br>
 
-  <label for="fabric">Recommended fabric</label>
-  <select
-          name="fabric"
-          id="fabric"
-  >
-    <option value="1">Cotton</option>
-    <option value="2">Velvet</option>
-    <option value="3">Silk</option>
-  </select><br>
+        <div>
+            <label for="fabric0">Recommended fabric 0</label>
+            <select
+                    name="fabric0"
+                    id="fabric0"
+            >
+                <option value="1">Cotton</option>
+                <option value="2">Velvet</option>
+                <option value="3">Silk</option>
+            </select>
 
-  <label for="published_in">Published in</label>
-  <input
-          placeholder="Heft 01/2023"
-          type="text"
-          name="published_in"
-          id="published_in"
-  > <br>
+            <label for="fabric0_length">Length</label>
+            <input id="fabric0_length" placeholder="0.0" type="text" name="fabric_length">m
+        </div>
+        <div>
+            <label for="fabric1">Recommended fabric 1</label>
+            <select
+                    name="fabric1"
+                    id="fabric1"
+            >
+                <option value="1">Cotton</option>
+                <option value="2">Velvet</option>
+                <option value="3">Silk</option>
+            </select>
 
-  <label for="difficulty">Difficulty</label>
-  <input
-          placeholder="2/5"
-          type="text"
-          name="difficulty"
-          id="difficulty"
-  >
+            <label for="fabric1_length">Length</label>
+            <input id="fabric1_length" placeholder="0.0" type="text" name="fabric1_length">m
+        </div>
+        <div>
+            <label for="fabric2">Recommended fabric 2</label>
+            <select
+                    name="fabric2"
+                    id="fabric2"
+            >
+                <option value="1">Cotton</option>
+                <option value="2">Velvet</option>
+                <option value="3">Silk</option>
+            </select>
+
+            <label for="fabric2_length">Length</label>
+            <input id="fabric2_length" placeholder="0.0" type="text" name="fabric2_length">m
+        </div>
+
+        <label for="published_in">Published in</label>
+        <input
+                placeholder="Heft 01/2023"
+                type="text"
+                name="published_in"
+                id="published_in"
+        > <br>
+
+        <label for="difficulty">Difficulty</label>
+        <input
+                placeholder="2/5"
+                type="text"
+                name="difficulty"
+                id="difficulty"
+        >
 
 
-  </fieldset>
+    </fieldset>
 
 
-  <button type="submit" class="btn">
-    Create
-  </button>
+    <button type="submit" class="btn">
+        Create
+    </button>
 </form>
-
 
 
 </body>
