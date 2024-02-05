@@ -17,16 +17,17 @@ data class Pattern(
     val img_url: String,
     val patternFabric: MutableList<PatternFabric> = mutableListOf(),
 )
+
 data class PatternFabric(
     val fabric_type: String,
     val length: Double
 )
 
 data class PatternFabricDetails(
-val id: Int,
-val name: String,
-val length: Double,
-val fabric_type: String
+    val id: Int,
+    val name: String,
+    val length: Double,
+    val fabric_type: String
 )
 
 fun Route.patterns() {
@@ -83,7 +84,7 @@ fun Route.patterns() {
 
     // statement for fabrics matching the pattern
     val patternFabricByPatternIdStatement = dbConnection.prepareStatement(
-    """
+        """
     | select
     |   pattern_fabric.fabric_length as length,
     |   fabric_type.name as fabric_type
@@ -123,8 +124,8 @@ fun Route.patterns() {
     // CREATE statement for new fabric pattern relation
     val createPatternFabricStatement = dbConnection.prepareStatement(
         """
-    | insert into pattern_fabric (pattern_id, fabric_type_id) 
-    | values (?, ?) 
+    | insert into pattern_fabric (pattern_id, fabric_type_id, fabric_length) 
+    | values (?, ?, ?) 
     | returning id;
     """.trimMargin()
     )
@@ -157,7 +158,6 @@ fun Route.patterns() {
         val formParams = call.receiveParameters()
         val nameParam = formParams["name"]
         val publisherParam = formParams["publisher"]
-        val fabricParam = formParams["fabric"]
         val publishedInParam = formParams["published_in"]
         val difficultyParam = formParams["difficulty"]
 
@@ -168,10 +168,26 @@ fun Route.patterns() {
         val resultSet = createPatternStatement.executeQuery()
         resultSet.next()
         val patternId = resultSet.getInt("id")
-        val fabricId = fabricParam!!.toInt()
-        createPatternFabricStatement.setInt(1, patternId)
-        createPatternFabricStatement.setInt(2, fabricId)
-        createPatternFabricStatement.executeQuery()
+
+        for (x in 0..2) {
+            val fabricParam = formParams["fabric$x"]
+            val fabricLengthParam = formParams["fabric${x}_length"]
+            if (fabricParam != null && fabricParam != "") {
+                val fabricId = fabricParam.toIntOrNull()
+                if (fabricId == null) {
+                    return@post call.respond(HttpStatusCode.BadRequest, "Invalid fabricId: '$fabricParam'")
+                }
+                val fabricLength = fabricLengthParam?.toDoubleOrNull()
+                if (fabricLength == null) {
+                    return@post call.respond(HttpStatusCode.BadRequest, "Invalid fabricLength: '$fabricLengthParam'")
+                }
+                createPatternFabricStatement.setInt(1, patternId)
+                createPatternFabricStatement.setInt(2, fabricId)
+                createPatternFabricStatement.setDouble(3, fabricLength)
+                createPatternFabricStatement.executeQuery()
+            }
+        }
+
 
         call.respondRedirect("/pattern/$patternId")
     }
@@ -198,7 +214,7 @@ fun Route.patterns() {
                         fabricPatternResultSet.getDouble("length"),
                     )
                 )
-        }
+            }
 
             projectByPatternStatement.setInt(1, patternId)
             val projectResults = projectByPatternStatement.executeQuery()
