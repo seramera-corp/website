@@ -13,4 +13,10 @@
     <include file="changelog/006_clothing_type.sql" relativeToChangelogFile="true"/>
     <include file="changelog/006a_insert_clothing_type.sql" relativeToChangelogFile="true"/>
     <include file="changelog/006b_insert_sub_clothing_type.sql" relativeToChangelogFile="true"/>
-    </databaseChangeLog>
+    <include file="changelog/007_gender.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/007a_insert_gender.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/007b_alter_pattern_add_gender_column.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/007c_add_gender_to_pattern.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/008_pattern_clothing_type.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/008a_insert_pattern_clothing_type.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>
