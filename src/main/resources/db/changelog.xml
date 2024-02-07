@@ -10,7 +10,7 @@
     <include file="changelog/004a_insert_fabric_type.sql" relativeToChangelogFile="true"/>
     <include file="changelog/005_pattern_fabric.sql" relativeToChangelogFile="true"/>
     <include file="changelog/005a_insert_pattern_fabric.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/006_category.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/006a_insert_category.sql" relativeToChangelogFile="true"/>
-    <include file="changelog/006b_insert_sub_category.sql" relativeToChangelogFile="true"/>
-</databaseChangeLog>
+    <include file="changelog/006_clothing_type.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/006a_insert_clothing_type.sql" relativeToChangelogFile="true"/>
+    <include file="changelog/006b_insert_sub_clothing_type.sql" relativeToChangelogFile="true"/>
+    </databaseChangeLog>
