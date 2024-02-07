@@ -16,6 +16,7 @@ data class Pattern(
     val publisher: String,
     val img_url: String,
     val patternFabric: MutableList<PatternFabric> = mutableListOf(),
+    val clothingType: MutableList<ClothingType> = mutableListOf(),
 )
 
 data class PatternFabric(
@@ -23,11 +24,8 @@ data class PatternFabric(
     val length: Double
 )
 
-data class PatternFabricDetails(
-    val id: Int,
-    val name: String,
-    val length: Double,
-    val fabric_type: String
+data class ClothingType(
+    val name: String
 )
 
 fun Route.patterns() {
@@ -91,6 +89,17 @@ fun Route.patterns() {
     | from pattern_fabric
     | join fabric_type on pattern_fabric.fabric_type_id = fabric_type.id
     | where pattern_fabric.pattern_id = ?
+    """.trimMargin()
+    )
+
+    // statement for clothing types matching the pattern
+    val patternClothingTypeByPatternIdStatement = dbConnection.prepareStatement(
+        """
+    | select
+    |   clothing_type.name as clothing_type
+    | from pattern_clothing_type
+    | join clothing_type on pattern_clothing_type.clothing_type_id = clothing_type.id
+    | where pattern_clothing_type.pattern_id = ?
     """.trimMargin()
     )
 
@@ -203,6 +212,8 @@ fun Route.patterns() {
         val resultSet = patternByIdStatement.executeQuery()
         patternFabricByPatternIdStatement.setInt(1, patternId)
         val fabricPatternResultSet = patternFabricByPatternIdStatement.executeQuery()
+        patternClothingTypeByPatternIdStatement.setInt(1, patternId)
+        val clothingTypePatternResultSet = patternClothingTypeByPatternIdStatement.executeQuery()
         if (resultSet.next()) {
             // no fabric details yet
             val pattern = patternDetailsFromResultSet(resultSet)
@@ -213,6 +224,12 @@ fun Route.patterns() {
                         fabricPatternResultSet.getString("fabric_type"),
                         fabricPatternResultSet.getDouble("length"),
                     )
+                )
+            }
+
+            while (clothingTypePatternResultSet.next()){
+                pattern.clothingType.add(
+                    ClothingType(clothingTypePatternResultSet.getString("clothing_type"))
                 )
             }
 

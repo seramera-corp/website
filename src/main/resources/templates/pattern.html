@@ -33,6 +33,14 @@
                         </ul>
                     </td>
                 </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>
+                        <ul th:each="clothingType : ${pattern.clothingType}">
+                            <li th:text="${clothingType.name}">Jeans</li>
+                        </ul>
+                    </td>
+                </tr>
                 </tbody>
             </table>
             <div class="pattern-details__description" th:text="'Beschreibungstext'">
