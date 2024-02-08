@@ -1,8 +1,8 @@
 package com.serameracorp.plugins
 
-import com.serameracorp.projects
-import com.serameracorp.patterns
-import com.serameracorp.user
+import com.serameracorp.project.projects
+import com.serameracorp.pattern.patterns
+import com.serameracorp.user.user
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*

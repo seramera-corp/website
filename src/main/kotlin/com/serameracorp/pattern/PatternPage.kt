@@ -1,0 +1,67 @@
+package com.serameracorp.pattern
+
+import io.ktor.http.*
+import io.ktor.server.application.*
+import io.ktor.server.request.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+import io.ktor.server.thymeleaf.*
+
+fun Route.patterns() {
+
+    val patternRepository = PatternRepository()
+    val patternService = PatternService()
+
+    // GET for search
+    get("/pattern") {
+        val searchParam = call.request.queryParameters["pattern-search"]
+
+        val patterns = patternService.findAllPatternsByName(searchParam)
+
+        val res = ThymeleafContent("patterns.html", mapOf("patterns" to patterns))
+        call.respond(res)
+    }
+
+    // GET for create
+    get("/pattern/create") {
+        val res = ThymeleafContent("pattern_create.html", mapOf())
+        call.respond(res)
+    }
+
+    // POST for create
+    post("/pattern/create") {
+        val formParams = call.receiveParameters()
+        val patternId = patternService.createPattern(formParams)
+
+        kotlin.runCatching {
+            patternService.createPatternFabrics(patternId, formParams)
+        }.onFailure {
+            if (it is IllegalArgumentException) {
+                return@post call.respond(HttpStatusCode.BadRequest, "${it.message}")
+            }
+        }
+        call.respondRedirect("/pattern/$patternId")
+    }
+
+    // GET for detail
+    get("/pattern/{patternId}") {
+        val patternId = call.parameters["patternId"]?.toIntOrNull()
+        if (patternId == null) {
+            return@get call.respond(HttpStatusCode.NotFound)
+        }
+
+        runCatching {
+            patternService.findPatternWithDetails(patternId)
+        }.onSuccess { pattern: Pattern ->
+            val res = ThymeleafContent(
+                "pattern.html", mapOf(
+                    "pattern" to pattern,
+                    "projects" to patternService.findProjectsByPatternId(patternId)
+                )
+            )
+            call.respond(res)
+        }.onFailure {
+            call.respond(HttpStatusCode.NotFound, "${it.message}")
+        }
+    }
+}
