@@ -2,8 +2,6 @@ package com.serameracorp.pattern
 
 import com.serameracorp.project.Project
 import com.serameracorp.project.projectFromResultSet
-import io.ktor.http.*
-import io.ktor.server.plugins.*
 import java.sql.ResultSet
 
 class PatternService {
@@ -52,24 +50,24 @@ class PatternService {
         }.toList()
     }
 
-    fun findPatternWithDetails(patternId: Int): Pattern{
-        val pattern = findPatternById(patternId)
-        addPatternDetails(pattern)
-        return pattern
-    }
+    fun findPatternWithDetails(patternId: Int): Pattern? =
+        findPatternById(patternId)?.let { pattern: Pattern ->
+            addPatternDetails(pattern)
+            pattern
+        }
 
-    fun findPatternById(patternId: Int): Pattern {
+    fun findPatternById(patternId: Int): Pattern? {
         patternRepository.patternByIdStatement.setInt(1, patternId)
         val resultSet = patternRepository.patternByIdStatement.executeQuery()
         if (resultSet.next()) {
             // no fabric details yet
             return patternDetailsFromResultSet(resultSet)
         } else {
-            throw NotFoundException("The searched pattern was not found")
+            return null
         }
     }
 
-    fun findProjectsByPatternId(patternId: Int): List<Project>{ //TODO move to project package?
+    fun findProjectsByPatternId(patternId: Int): List<Project> { //TODO move to project package?
         patternRepository.projectByPatternStatement.setInt(1, patternId)
         val projectResults = patternRepository.projectByPatternStatement.executeQuery()
         return sequence {
@@ -79,7 +77,7 @@ class PatternService {
         }.toList()
     }
 
-    fun addPatternDetails(pattern: Pattern){
+    fun addPatternDetails(pattern: Pattern) {
         pattern.patternFabric.addAll(findPatternFabrics(pattern.id))
         pattern.clothingType.addAll(findPatternClothingTypes(pattern.id))
     }
@@ -94,7 +92,7 @@ class PatternService {
         }.toList()
     }
 
-    private fun findPatternFabrics(patternId: Int): List<PatternFabric>{
+    private fun findPatternFabrics(patternId: Int): List<PatternFabric> {
         patternRepository.patternFabricByPatternIdStatement.setInt(1, patternId)
         val fabricPatternResultSet = patternRepository.patternFabricByPatternIdStatement.executeQuery()
         return sequence {

@@ -9,7 +9,6 @@ import io.ktor.server.thymeleaf.*
 
 fun Route.patterns() {
 
-    val patternRepository = PatternRepository()
     val patternService = PatternService()
 
     // GET for search
@@ -59,25 +58,23 @@ fun Route.patterns() {
             return@get call.respond(HttpStatusCode.NotFound)
         }
 
-        runCatching {
-            patternService.findPatternWithDetails(patternId)
-        }.onSuccess { pattern: Pattern ->
-            val res = ThymeleafContent(
-                "pattern.html", mapOf(
-                    "pattern" to pattern,
-                    "projects" to patternService.findProjectsByPatternId(patternId)
-                )
-            )
-            call.respond(res)
-        }.onFailure {
-            call.respond(HttpStatusCode.NotFound, "${it.message}")
+        val pattern = patternService.findPatternWithDetails(patternId)
+        if (pattern == null) {
+            return@get call.respond(HttpStatusCode.NotFound, "The searched pattern was not found")
         }
+        val res = ThymeleafContent(
+            "pattern.html", mapOf(
+                "pattern" to pattern,
+                "projects" to patternService.findProjectsByPatternId(patternId)
+            )
+        )
+        call.respond(res)
     }
 }
 
 fun getFabricParams(formParams: Parameters): MutableList<Pair<String?, String?>> {
     val fabrics: MutableList<Pair<String?, String?>> = mutableListOf()
-    for (x in 0..2){
+    for (x in 0..2) {
         fabrics.add(Pair(formParams["fabric$x"], formParams["fabric${x}_length"]))
     }
     return fabrics
