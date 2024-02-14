@@ -9,26 +9,19 @@ import java.sql.ResultSet
 class PatternService {
 
     val patternRepository = PatternRepository()
-    fun createPattern(formParams: Parameters): Int {
-        val nameParam = formParams["name"]
-        val publisherParam = formParams["publisher"]
-        val publishedInParam = formParams["published_in"]
-        val difficultyParam = formParams["difficulty"]
-
-        patternRepository.createPatternStatement.setString(1, nameParam ?: "")
-        patternRepository.createPatternStatement.setString(2, publisherParam ?: "")
-        patternRepository.createPatternStatement.setString(3, difficultyParam ?: "")
-        patternRepository.createPatternStatement.setString(4, publishedInParam ?: "")
+    fun createPattern(patternParams: PatternParams): Int {
+        patternRepository.createPatternStatement.setString(1, patternParams.name ?: "")
+        patternRepository.createPatternStatement.setString(2, patternParams.publisher ?: "")
+        patternRepository.createPatternStatement.setString(3, patternParams.difficulty ?: "")
+        patternRepository.createPatternStatement.setString(4, patternParams.publishedIn ?: "")
         val resultSet = patternRepository.createPatternStatement.executeQuery()
         resultSet.next()
         return resultSet.getInt("id")
     }
 
-    fun createPatternFabrics(patternId: Int, formParams: Parameters) {
-        for (x in 0..2) {
-            val fabricParam = formParams["fabric$x"]
-            val fabricLengthParam = formParams["fabric${x}_length"]
-            createPatternFabric(patternId, fabricParam, fabricLengthParam)
+    fun createPatternFabrics(patternId: Int, patternParams: PatternParams) {
+        for (fabricParam in patternParams.patternFabric) {
+            createPatternFabric(patternId, fabricParam.first, fabricParam.second)
         }
     }
 

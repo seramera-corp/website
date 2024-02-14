@@ -31,10 +31,19 @@ fun Route.patterns() {
     // POST for create
     post("/pattern/create") {
         val formParams = call.receiveParameters()
-        val patternId = patternService.createPattern(formParams)
+
+        val patternParams = PatternParams(
+            name = formParams["name"],
+            publisher = formParams["publisher"],
+            publishedIn = formParams["published_in"],
+            difficulty = formParams["difficulty"],
+            patternFabric = getFabricParams(formParams)
+        )
+
+        val patternId = patternService.createPattern(patternParams)
 
         kotlin.runCatching {
-            patternService.createPatternFabrics(patternId, formParams)
+            patternService.createPatternFabrics(patternId, patternParams)
         }.onFailure {
             if (it is IllegalArgumentException) {
                 return@post call.respond(HttpStatusCode.BadRequest, "${it.message}")
@@ -64,4 +73,12 @@ fun Route.patterns() {
             call.respond(HttpStatusCode.NotFound, "${it.message}")
         }
     }
+}
+
+fun getFabricParams(formParams: Parameters): MutableList<Pair<String?, String?>> {
+    val fabrics: MutableList<Pair<String?, String?>> = mutableListOf()
+    for (x in 0..2){
+        fabrics.add(Pair(formParams["fabric$x"], formParams["fabric${x}_length"]))
+    }
+    return fabrics
 }
