@@ -87,29 +87,26 @@ class PatternService {
     private fun findPatternClothingTypes(patternId: Int): List<ClothingType> {
         patternRepository.patternClothingTypeByPatternIdStatement.setInt(1, patternId)
         val clothingTypePatternResultSet = patternRepository.patternClothingTypeByPatternIdStatement.executeQuery()
-
-        val clothingTypes: MutableList<ClothingType> = mutableListOf()
-        while (clothingTypePatternResultSet.next()) {
-            clothingTypes.add(
-                ClothingType(clothingTypePatternResultSet.getString("clothing_type"))
-            )
-        }
-        return clothingTypes
+        return sequence {
+            while (clothingTypePatternResultSet.next()) {
+                yield(ClothingType(clothingTypePatternResultSet.getString("clothing_type")))
+            }
+        }.toList()
     }
 
     private fun findPatternFabrics(patternId: Int): List<PatternFabric>{
         patternRepository.patternFabricByPatternIdStatement.setInt(1, patternId)
         val fabricPatternResultSet = patternRepository.patternFabricByPatternIdStatement.executeQuery()
-        val fabrics: MutableList<PatternFabric> = mutableListOf()
-        while (fabricPatternResultSet.next()) {
-            fabrics.add(
-                PatternFabric(
-                    fabricPatternResultSet.getString("fabric_type"),
-                    fabricPatternResultSet.getDouble("length"),
+        return sequence {
+            while (fabricPatternResultSet.next()) {
+                yield(
+                    PatternFabric(
+                        fabricPatternResultSet.getString("fabric_type"),
+                        fabricPatternResultSet.getDouble("length"),
+                    )
                 )
-            )
-        }
-        return fabrics
+            }
+        }.toList()
     }
 
     // create pattern object from statement
